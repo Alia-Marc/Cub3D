@@ -23,7 +23,7 @@ FLAGS = -Wall -Wextra -Werror
 	cc $(FLAGS) -I libft/libft.h -c $< -o $(<:.c=.o)
 
 $(NAME):    $(OBJ)
-			ar -rc -o $(NAME) $(OBJ)
+			ar -r -c $(NAME) $(OBJ)
 
 all:    $(NAME)
 

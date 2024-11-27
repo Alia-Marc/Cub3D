@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: emilefournier <emilefournier@student.42    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
+#    Updated: 2024/11/25 18:11:52 by emilefourni      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3D
 
 LIBFT = ./libft
@@ -6,11 +18,11 @@ INCLUDE = /include/cub3D.h
 
 RENDERING = \
 
-PARSING = \
+PARSING = srcs/map_parsing/map_parsing_utils.c \
 
-SIGNAL = srcs/signal/signal.c srcs/signal/signal_cmd.c
+# SIGNAL = srcs/signal/signal.c srcs/signal/signal_cmd.c
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g3
 
 $(NAME):    $(RENDERING) $(PARSING) srcs/main.c
 			make --silent -C $(LIBFT)
