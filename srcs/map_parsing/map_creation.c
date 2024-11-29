@@ -6,13 +6,13 @@
 /*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/11/29 11:40:38 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/11/29 11:57:37 by emilefourni      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	fill_ceiling_rgb(char *res, int index, t_map *map)
+static void	fill_ceiling_rgb(char *res, int index, t_map *map)
 {
 	char	*temp;
 	char	**int_tab;
@@ -26,7 +26,7 @@ void	fill_ceiling_rgb(char *res, int index, t_map *map)
 	ft_free_tab(int_tab);
 }
 
-void	fill_floor_rgb(char *res, int index, t_map *map)
+static void	fill_floor_rgb(char *res, int index, t_map *map)
 {
 	char	*temp;
 	char	**int_tab;
@@ -40,7 +40,7 @@ void	fill_floor_rgb(char *res, int index, t_map *map)
 	ft_free_tab(int_tab);
 }
 
-t_map	*fill_struct(char *res, t_map *map)
+static t_map	*fill_struct(char *res, t_map *map)
 {
 	int	index;
 

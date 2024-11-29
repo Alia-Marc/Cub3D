@@ -6,7 +6,7 @@
 /*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/11/29 11:41:17 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/11/29 11:47:08 by emilefourni      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char **free_line_map(char **map)
     int	(free_line) = 0;
     int	(shift_index) = 0;
 
-    while (free_line < 6 && map[free_line]) //the first six lines after the split are only the map info not the map itself
+    while (free_line < 6 && map[free_line]) //the first six lines after the split are always the map info only not the map itself so I need to shift the map 6 lines down
 	{
         free(map[free_line]);
         free_line++;
