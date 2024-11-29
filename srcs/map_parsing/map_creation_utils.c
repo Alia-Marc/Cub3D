@@ -6,7 +6,7 @@
 /*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/11/29 11:47:08 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/11/29 16:54:22 by emilefourni      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,28 @@ char **free_line_map(char **map)
     while (shift_index < free_line)
         map[shift_index++] = NULL;
     return (map);
+}
+
+int check_rgb(char **rgb_values)
+{
+    int i;
+    int j;
+
+    i = 0;
+    if (!rgb_values || !rgb_values[0] || !rgb_values[1] || !rgb_values[2])
+        return (0);
+    while (rgb_values[i])
+    {
+        j = 0;
+        while (rgb_values[i][j])
+        {
+            if (!IS_NUM(rgb_values[i][j]))
+                return (0);
+            j++;
+        }
+        i++;
+    }
+    if (i != 3)
+        return (0);
+    return (1);
 }

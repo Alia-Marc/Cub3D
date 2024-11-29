@@ -6,7 +6,7 @@
 /*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2024/11/29 15:37:18 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/11/29 16:50:45 by emilefourni      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_map
 #define ERROR_WALL_TEXTURE_PATH "tia une couille dans le texture path des wall zebi\n"
 #define ERROR_VALUE_RGB "tia des valeurs RGB invalides le S\n"
 #define OUT_OF_RANGE(x) ((x) < 0 || (x) > 255)
+#define IS_NUM(c) ((c) >= '0' && c <= '9')
 
 int check_and_open_map(char *file_name, t_map *map);
 
@@ -53,6 +54,7 @@ int check_and_open_map(char *file_name, t_map *map);
 
 char	*path_texture_cpy(char *s, int i);
 char	**free_line_map(char **map);
+int 	check_rgb(char **rgb_values);
 
 //parse_map.c
 

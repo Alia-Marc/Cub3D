@@ -6,7 +6,7 @@
 /*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/11/29 11:57:37 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/11/29 16:50:26 by emilefourni      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ static void	fill_ceiling_rgb(char *res, int index, t_map *map)
 	
 	temp = path_texture_cpy(res, index);
 	int_tab = ft_split(temp, ',');
+	if (!check_rgb(int_tab))
+	{
+		ft_printf("Error\n"ERROR_VALUE_RGB);
+		return ;
+	}
 	map->ceiling_red = ft_atoi(int_tab[0]);
 	map->ceiling_green = ft_atoi(int_tab[1]);
 	map->ceiling_blue = ft_atoi(int_tab[2]);
@@ -33,6 +38,11 @@ static void	fill_floor_rgb(char *res, int index, t_map *map)
 
 	temp = path_texture_cpy(res, index);
 	int_tab = ft_split(temp, ',');
+	if (!check_rgb(int_tab))
+	{
+		ft_printf("Error\n"ERROR_VALUE_RGB);
+		return ;
+	}
 	map->floor_red = ft_atoi(int_tab[0]);
 	map->floor_green= ft_atoi(int_tab[1]);
 	map->floor_blue = ft_atoi(int_tab[2]);
