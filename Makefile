@@ -6,7 +6,7 @@
 #    By: emilefournier <emilefournier@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
-#    Updated: 2024/11/25 18:11:52 by emilefourni      ###   ########.fr        #
+#    Updated: 2024/11/29 11:39:32 by emilefourni      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INCLUDE = /include/cub3D.h
 
 RENDERING = \
 
-PARSING = srcs/map_parsing/map_parsing_utils.c \
+PARSING = srcs/map_parsing/map_creation.c srcs/map_parsing/map_creation_utils.c srcs/map_parsing/parse_map.c\
 
 # SIGNAL = srcs/signal/signal.c srcs/signal/signal_cmd.c
 

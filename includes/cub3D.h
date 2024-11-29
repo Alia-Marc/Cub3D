@@ -6,7 +6,7 @@
 /*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2024/11/27 11:42:33 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/11/29 11:41:12 by emilefourni      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,17 @@ typedef struct s_map
 
 //MAP_PARSING
 
-int check_and_open_map(char *file_name, t_map *map);
-void	print_map(char **map);
+//map_creation.c
 
+int check_and_open_map(char *file_name, t_map *map);
+
+//map_creation_utils.c
+
+char	*path_texture_cpy(char *s, int i);
+char	**free_line_map(char **map);
+
+//parse_map.c
+
+char    **parse_map(t_map *map);
 
 #endif

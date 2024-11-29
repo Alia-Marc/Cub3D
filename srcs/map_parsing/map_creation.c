@@ -1,49 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing_utils.c                                :+:      :+:    :+:   */
+/*   map_creation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/11/27 11:43:16 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/11/29 11:40:38 by emilefourni      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-char	*path_texture_cpy(char *s, int i)
-{
-	char	*dup;
-	int		temp;
-	int		(len) = 0;
-
-	while (s[i] != ' ')
-		i++;
-	if (s[i])
-		i++;
-	temp = i;
-	while (s[i] && s[i] != '\n')
-	{
-		i++;
-		len++;
-	}
-	if (len == 0)
-		return (NULL);
-	dup = (char *)malloc((len + 1) * sizeof(char));
-	i = temp;
-	temp = 0;
-	if (dup == 0)
-		return (NULL);
-	while (s[i] && s[i] != '\n')
-	{
-		dup[temp] = s[i];
-		i++;
-		temp++;
-	}
-	dup[temp] = '\0';
-	return (dup);
-}
 
 void	fill_ceiling_rgb(char *res, int index, t_map *map)
 {
@@ -56,7 +23,7 @@ void	fill_ceiling_rgb(char *res, int index, t_map *map)
 	map->ceiling_green = ft_atoi(int_tab[1]);
 	map->ceiling_blue = ft_atoi(int_tab[2]);
 	free(temp);
-	ft_free_tab(int_tab);		
+	ft_free_tab(int_tab);
 }
 
 void	fill_floor_rgb(char *res, int index, t_map *map)
@@ -95,10 +62,10 @@ t_map	*fill_struct(char *res, t_map *map)
 		index++;
 	}
 	if (!map->north_texture_path || !map->south_texture_path || !map->east_texture_path || !map->west_texture_path)
-		return (ft_printf(ERROR_WALL_TEXTURE_PATH), NULL);
+		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), NULL);
 	if (OUT_OF_RANGE(map->ceiling_red) || OUT_OF_RANGE(map->ceiling_green) || OUT_OF_RANGE(map->ceiling_blue) ||
    		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue)) 
-		return (ft_printf(ERROR_VALUE_RGB), NULL);
+		return (ft_printf("Error\n"ERROR_VALUE_RGB), NULL);
 	return (map);
 }
 
@@ -109,10 +76,10 @@ int	check_and_open_map(char *file_name, t_map *map)
 	char	*line;
     
 	if (ft_strncmp(".cub", &file_name[ft_strlen(file_name) - 4], 4) != 0)
-        return (ft_printf(BAD_FILE_NAME), 0);
+        return (ft_printf("Error\n"BAD_FILE_NAME), 0);
     fd = open(file_name, O_RDONLY);
     if (fd < 1)
-        return (ft_printf(BAD_OPENING), close(fd), 0);
+        return (ft_printf("Error\n"BAD_OPENING), close(fd), 0);
 	res = get_next_line(fd);
 	while (res)
 	{
@@ -123,7 +90,9 @@ int	check_and_open_map(char *file_name, t_map *map)
 		free(line);
 	}
 	map = fill_struct(res, map);
-	if (map)
-    	map->map = ft_split(res, '\n');
+	if (!map)
+		return (close(fd), free(res), 0);
+    map->map = ft_split(res, '\n');
+	map->map = free_line_map(map->map);
     return (close(fd), free(res), 1);
 }
