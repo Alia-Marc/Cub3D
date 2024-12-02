@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:00:40 by marc              #+#    #+#             */
-/*   Updated: 2024/12/02 16:50:39 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:48:45 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 				ft_printf("map is invalid\n");
 		}
 		else
-			return (0);
+			argc*=1;
 	}
 	free_map(&map);
 	return (0);

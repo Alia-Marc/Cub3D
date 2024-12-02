@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/02 16:50:33 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:47:16 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,45 +45,58 @@ char	*path_texture_cpy(char *s, int i)
 	return (dup);
 }
 
-char **free_line_map(char **map)
+int	check_struct_fill(t_map *map)
 {
-    int	(free_line) = 0;
-    int	(shift_index) = 0;
-
-    while (free_line < 6 && map[free_line]) //the first six lines after the split are always the map info only not the map itself so I need to shift the map 6 lines down
-	{
-        free(map[free_line]);
-        free_line++;
-    }
-    while (map[free_line])
-        map[shift_index++] = map[free_line++];
-    while (shift_index < free_line)
-        map[shift_index++] = NULL;
-    return (map);
+	if (!map->north_texture_path || !map->south_texture_path || !map->east_texture_path || !map->west_texture_path)
+		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), 0);
+	if (!(map->ceiling_red) || !(map->ceiling_green) || !(map->ceiling_blue) ||
+		 !(map->floor_red) || !(map->floor_green) || !(map->floor_blue))
+		return (ft_printf("Error\n"ERROR_NO_RGB), 0);
+	if (OUT_OF_RANGE(map->ceiling_red) || OUT_OF_RANGE(map->ceiling_green) || OUT_OF_RANGE(map->ceiling_blue) ||
+		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue))
+		return (ft_printf("Error\n"ERROR_VALUE_RGB), 0);
+	return (1);
 }
 
-int check_rgb(char **rgb_values)
+char **free_line_map(char **map)
 {
-    int i;
-    int j;
+	int	(free_line) = 0;
+	int	(shift_index) = 0;
 
-    i = 0;
-    if (!rgb_values || !rgb_values[0] || !rgb_values[1] || !rgb_values[2])
-        return (0);
-    while (rgb_values[i])
-    {
-        j = 0;
-        while (rgb_values[i][j])
-        {
-            if (!IS_NUM(rgb_values[i][j]))
-                return (0);
-            j++;
-        }
-        i++;
-    }
-    if (i != 3)
-        return (0);
-    return (1);
+	while (free_line < 6 && map[free_line]) //the first six lines after the split are always the map info only not the map itself so I need to shift the map 6 lines down
+	{
+		free(map[free_line]);
+		free_line++;
+	}
+	while (map[free_line])
+		map[shift_index++] = map[free_line++];
+	while (shift_index < free_line)
+		map[shift_index++] = NULL;
+	return (map);
+}
+
+int	check_rgb(char **rgb_values)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (!rgb_values || !rgb_values[0] || !rgb_values[1] || !rgb_values[2])
+		return (0);
+	while (rgb_values[i])
+	{
+		j = 0;
+		while (rgb_values[i][j])
+		{
+			if (!IS_NUM_OR_SPACE(rgb_values[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	if (i != 3)
+		return (0);
+	return (1);
 }
 
 void	free_map(t_map *map)

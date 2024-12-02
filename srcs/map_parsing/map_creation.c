@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/02 17:08:51 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:43:34 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ static void	fill_ceiling_rgb(char *res, int index, t_map *map)
 	temp = path_texture_cpy(res, index);
 	int_tab = ft_split(temp, ',');
 	if (!check_rgb(int_tab))
-	{
-		ft_printf("Error\n"ERROR_VALUE_RGB);
 		return ;
-	}
 	map->ceiling_red = ft_atoi(int_tab[0]);
 	map->ceiling_green = ft_atoi(int_tab[1]);
 	map->ceiling_blue = ft_atoi(int_tab[2]);
@@ -39,10 +36,7 @@ static void	fill_floor_rgb(char *res, int index, t_map *map)
 	temp = path_texture_cpy(res, index);
 	int_tab = ft_split(temp, ',');
 	if (!check_rgb(int_tab))
-	{
-		ft_printf("Error\n"ERROR_VALUE_RGB);
 		return ;
-	}
 	map->floor_red = ft_atoi(int_tab[0]);
 	map->floor_green= ft_atoi(int_tab[1]);
 	map->floor_blue = ft_atoi(int_tab[2]);
@@ -52,9 +46,8 @@ static void	fill_floor_rgb(char *res, int index, t_map *map)
 
 static t_map	*fill_struct(char *res, t_map *map)
 {
-	int	index;
+	int	(index) = 0;
 
-	index = 0;
 	while (res[index])
 	{
 		if (res[index] == 'N' && (res[index + 1] == 'O' && res[index + 1]))
@@ -71,11 +64,8 @@ static t_map	*fill_struct(char *res, t_map *map)
 			fill_ceiling_rgb(res, index, map);
 		index++;
 	}
-	if (!map->north_texture_path || !map->south_texture_path || !map->east_texture_path || !map->west_texture_path)
-		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), NULL);
-	if (OUT_OF_RANGE(map->ceiling_red) || OUT_OF_RANGE(map->ceiling_green) || OUT_OF_RANGE(map->ceiling_blue) ||
-   		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue))
-		return (ft_printf("Error\n"ERROR_VALUE_RGB), NULL);
+	if (!check_struct_fill(map))
+		return (NULL);
 	return (map);
 }
 

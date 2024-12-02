@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emilefournier <emilefournier@student.42    +#+  +:+       +#+         #
+#    By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
-#    Updated: 2024/11/29 11:39:32 by emilefourni      ###   ########.fr        #
+#    Updated: 2024/12/02 17:19:07 by emfourni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
