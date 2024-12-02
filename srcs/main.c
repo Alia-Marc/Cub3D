@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:00:40 by marc              #+#    #+#             */
-/*   Updated: 2024/11/29 15:37:53 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/12/02 16:50:39 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ int	main(int argc, char **argv)
 		{
 			if (parse_map(&map))
 				ft_printf("map is valid\n");
-			else 
+			else
 				ft_printf("map is invalid\n");
 		}
 		else
 			return (0);
 	}
+	free_map(&map);
 	return (0);
 }

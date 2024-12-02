@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2024/11/29 16:50:45 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/12/02 16:50:44 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int check_and_open_map(char *file_name, t_map *map);
 char	*path_texture_cpy(char *s, int i);
 char	**free_line_map(char **map);
 int 	check_rgb(char **rgb_values);
+void	free_map(t_map *map);
 
 //parse_map.c
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/11/29 16:50:26 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/12/02 17:08:51 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	fill_ceiling_rgb(char *res, int index, t_map *map)
 {
 	char	*temp;
 	char	**int_tab;
-	
+
 	temp = path_texture_cpy(res, index);
 	int_tab = ft_split(temp, ',');
 	if (!check_rgb(int_tab))
@@ -74,35 +74,40 @@ static t_map	*fill_struct(char *res, t_map *map)
 	if (!map->north_texture_path || !map->south_texture_path || !map->east_texture_path || !map->west_texture_path)
 		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), NULL);
 	if (OUT_OF_RANGE(map->ceiling_red) || OUT_OF_RANGE(map->ceiling_green) || OUT_OF_RANGE(map->ceiling_blue) ||
-   		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue)) 
+   		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue))
 		return (ft_printf("Error\n"ERROR_VALUE_RGB), NULL);
 	return (map);
 }
 
 int	check_and_open_map(char *file_name, t_map *map)
 {
-    int		fd;
+	int		fd;
 	char	*res;
 	char	*line;
-    
+	char	*temp;
+
 	if (ft_strncmp(".cub", &file_name[ft_strlen(file_name) - 4], 4) != 0)
-        return (ft_printf("Error\n"BAD_FILE_NAME), 0);
-    fd = open(file_name, O_RDONLY);
-    if (fd < 1)
-        return (ft_printf("Error\n"BAD_OPENING), close(fd), 0);
+		return (ft_printf("Error\n"BAD_FILE_NAME), 0);
+	fd = open(file_name, O_RDONLY);
+	if (fd < 1)
+		return (ft_printf("Error\n"BAD_OPENING), close(fd), 0);
 	res = get_next_line(fd);
 	while (res)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		temp = res;
 		res = ft_strjoin(res, line);
+		free(temp);
 		free(line);
 	}
+	if (res)
+		free(line);
 	map = fill_struct(res, map);
 	if (!map)
 		return (close(fd), free(res), 0);
-    map->map = ft_split(res, '\n');
+	map->map = ft_split(res, '\n');
 	map->map = free_line_map(map->map);
-    return (close(fd), free(res), 1);
+	return (close(fd), free(res), 1);
 }

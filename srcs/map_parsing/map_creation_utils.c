@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creation_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emilefournier <emilefournier@student.42    +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/11/29 16:54:22 by emilefourni      ###   ########.fr       */
+/*   Updated: 2024/12/02 16:50:33 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char **free_line_map(char **map)
         free(map[free_line]);
         free_line++;
     }
-    while (map[free_line]) 
+    while (map[free_line])
         map[shift_index++] = map[free_line++];
     while (shift_index < free_line)
         map[shift_index++] = NULL;
@@ -84,4 +84,15 @@ int check_rgb(char **rgb_values)
     if (i != 3)
         return (0);
     return (1);
+}
+
+void	free_map(t_map *map)
+{
+	if (!map)
+		return ;
+	free(map->north_texture_path);
+	free(map->south_texture_path);
+	free(map->west_texture_path);
+	free(map->east_texture_path);
+	ft_free_tab(map->map);
 }

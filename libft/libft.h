@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:39:26 by malia             #+#    #+#             */
-/*   Updated: 2024/08/29 15:52:50 by alia             ###   ########.fr       */
+/*   Updated: 2024/12/02 16:57:25 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,4 @@ void		pf_putunsigned(unsigned long long n,
 				unsigned long long len, char *base);
 void		pf_putnbr_base(long long n, char *base);
 
-#endif 
+#endif
