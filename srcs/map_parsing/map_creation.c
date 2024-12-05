@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/02 17:43:34 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:12:22 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ static void	fill_ceiling_rgb(char *res, int index, t_map *map)
 	temp = path_texture_cpy(res, index);
 	int_tab = ft_split(temp, ',');
 	if (!check_rgb(int_tab))
+	{
+		free(temp);
+		ft_free_tab(int_tab);
 		return ;
+	}
 	map->ceiling_red = ft_atoi(int_tab[0]);
 	map->ceiling_green = ft_atoi(int_tab[1]);
 	map->ceiling_blue = ft_atoi(int_tab[2]);
@@ -36,7 +40,11 @@ static void	fill_floor_rgb(char *res, int index, t_map *map)
 	temp = path_texture_cpy(res, index);
 	int_tab = ft_split(temp, ',');
 	if (!check_rgb(int_tab))
+	{
+		free(temp);
+		ft_free_tab(int_tab);
 		return ;
+	}
 	map->floor_red = ft_atoi(int_tab[0]);
 	map->floor_green= ft_atoi(int_tab[1]);
 	map->floor_blue = ft_atoi(int_tab[2]);
@@ -94,6 +102,7 @@ int	check_and_open_map(char *file_name, t_map *map)
 	}
 	if (res)
 		free(line);
+	init_map(map);
 	map = fill_struct(res, map);
 	if (!map)
 		return (close(fd), free(res), 0);

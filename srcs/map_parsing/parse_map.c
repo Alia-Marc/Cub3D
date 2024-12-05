@@ -6,13 +6,13 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:04:01 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/02 16:36:21 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:22:14 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-int check_char_map(char **map, t_map *pos_player)
+int	check_char_map(char **map, t_map *pos_player)
 {
 	int (row) = 0;
 	int (seen) = 0;
@@ -41,7 +41,7 @@ int check_char_map(char **map, t_map *pos_player)
 	return (1);
 }
 
-int is_surrounded_by_walls(char **map, int row, int col, int rows)
+int	is_surrounded_by_walls(char **map, int row, int col, int rows)
 {
 	int (current_row_length) = ft_strlen(map[row]);
 
@@ -69,34 +69,36 @@ int validate_edge_row(char *row)
 	return (1);
 }
 
-int validate_map_interior(char **map, int rows)
+int	validate_map_interior(char **map, int rows)
 {
-    int row = 1;
+	int row = 1;
 
-    while (row < rows - 1) {
-        int col = 0;
-        while (map[row][col]) {
-            if (IS_CELL_SUURROUNDED(map[row][col]))
-            {
-                if (!is_surrounded_by_walls(map, row, col, rows))
-                    return ( 0);
-            }
-            col++;
-        }
-        row++;
-    }
-    return (1);
+	while (row < rows - 1)
+	{
+		int col = 0;
+		while (map[row][col])
+		{
+			if (IS_CELL_SUURROUNDED(map[row][col]))
+			{
+				if (!is_surrounded_by_walls(map, row, col, rows))
+					return ( 0);
+			}
+			col++;
+		}
+		row++;
+	}
+	return (1);
 }
 
 int parse_map(t_map *map)
 {
-    if (!check_char_map(map->map, map))
-        return (0);
-    if (!validate_edge_row(map->map[0]))
-        return (ft_printf("Error\n"MAP_IS_INVALID), 0);
-    if (!validate_edge_row(map->map[map->nb_rows - 1]))
-        return (ft_printf("Error\n"MAP_IS_INVALID), 0);
-    if (!validate_map_interior(map->map, map->nb_rows))
-        return (ft_printf("Error\n"MAP_IS_INVALID), 0);
-    return (1);
+	if (!check_char_map(map->map, map))
+		return (0);
+	if (!validate_edge_row(map->map[0]))
+		return (ft_printf("Error\n"MAP_IS_INVALID), 0);
+	if (!validate_edge_row(map->map[map->nb_rows - 1]))
+		return (ft_printf("Error\n"MAP_IS_INVALID), 0);
+	if (!validate_map_interior(map->map, map->nb_rows))
+		return (ft_printf("Error\n"MAP_IS_INVALID), 0);
+	return (1);
 }
