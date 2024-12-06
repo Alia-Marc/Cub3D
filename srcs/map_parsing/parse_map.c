@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:04:01 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/05 14:22:14 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:28:53 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	is_surrounded_by_walls(char **map, int row, int col, int rows)
 		return (0);
 	if (col == 0 || map[row][col - 1] == ' ')
 		return (0);
-	if (col == ft_strlen(map[row]) || map[row][col + 1] == ' ')
+	if (col == ft_strlen(map[row]) - 1 || map[row][col + 1] == ' ')
 		return (0);
 	return (1);
 }
@@ -102,3 +102,5 @@ int parse_map(t_map *map)
 		return (ft_printf("Error\n"MAP_IS_INVALID), 0);
 	return (1);
 }
+
+

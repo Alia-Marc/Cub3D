@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/05 15:10:36 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/06 15:03:33 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ int	check_struct_fill(t_map *map)
 {
 	if (!map->north_texture_path || !map->south_texture_path || !map->west_texture_path || !map->east_texture_path)
 		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), 0);
-	if (!map->ceiling_red || !map->ceiling_green || !map->ceiling_blue ||
-		 !map->floor_red || !map->floor_green || !map->floor_blue)
-		 return (ft_printf("Error\n"ERROR_NO_RGB), 0);
 	if ((OUT_OF_RANGE(map->ceiling_red) || OUT_OF_RANGE(map->ceiling_green) || OUT_OF_RANGE(map->ceiling_blue) ||
 		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue)))
 		return (ft_printf("Error\n"ERROR_VALUE_RGB), 0);

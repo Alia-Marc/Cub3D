@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:44:20 by emfourni          #+#    #+#             */
-/*   Updated: 2024/12/05 14:46:47 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/06 15:01:56 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	init_map(t_map *map)
 	map->west_texture_path = NULL;
 	map->east_texture_path = NULL;
 	map->map = NULL;
-	map->ceiling_red = map->ceiling_green = map->ceiling_blue = 0;
-	map->floor_red = map->floor_green = map->floor_blue = 0;
+	map->ceiling_red = map->ceiling_green = map->ceiling_blue = -1;
+	map->floor_red = map->floor_green = map->floor_blue = -1;
 }
 
 void	free_map(t_map *map)
