@@ -6,43 +6,41 @@
 #    By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
-#    Updated: 2024/12/10 14:10:27 by emfourni         ###   ########.fr        #
+#    Updated: 2024/12/10 16:15:04 by emfourni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-LIBFT = ./libft
-MLX = ./minilibx-linux
+INCLUDES = includes/cub3D.h
 
-INCLUDE = include/cub3D.h
-
-RENDERING = \
+RENDERING = srcs/rendering/manage_window.c\
 
 PARSING = srcs/map_parsing/map_creation.c srcs/map_parsing/map_creation_utils.c srcs/map_parsing/parse_map.c\
 			srcs/map_parsing/map_creation_utils2.c\
 
-FLAGS = -Wall -Wextra -Werror -g3
-MLX_FLAGS = -L$(MLX) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+SRCS = $(RENDERING) $(PARSING)
 
-$(NAME): $(RENDERING) $(PARSING) srcs/main.c
-			make --silent -C $(LIBFT)
-			make --silent -C $(MLX)
-			cc $(FLAGS) $(RENDERING) $(PARSING) srcs/main.c -I $(INCLUDE) $(LIBFT)/libft.a $(MLX_FLAGS) -o $(NAME)
+OBJ =	$(SRCS:.c=.o)
 
-all: $(NAME)
+CC = cc -Iincludes -Ilibft -g3
 
-bonus: $(NAME_BONUS)
+all:	$(NAME)
+
+$(NAME): $(OBJ)
+	@make -C libft --no-print-directory --silent
+	@make -C mlx_linux --no-print-directory --silent
+	$(CC) srcs/main.c $(OBJ) -o $(NAME) libft/libft.a mlx_linux/libmlx.a -Iincludes -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 clean:
-		rm -f $(NAME) $(NAME_BONUS)
-		make --silent clean -C $(LIBFT)
-		make --silent clean -C $(MLX)
+	make -C libft clean
+	rm -f $(OBJ)
 
 fclean: clean
-		make --silent fclean -C $(LIBFT)
-		rm -f $(NAME)
+	make -C libft fclean
+	rm -f $(NAME)
 
 re: fclean all
 
-
+init:
+	@git clone https://github.com/42Paris/minilibx-linux.git mlx_linux

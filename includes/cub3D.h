@@ -6,14 +6,14 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2024/12/06 16:41:39 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:19:01 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# pragma once
 # include "../libft/libft.h"
+# include "../mlx_linux/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -36,6 +36,24 @@ typedef struct s_map
 	float		start_x;
 	int			nb_rows;
 }	t_map;
+
+typedef	struct s_assets
+{
+	void	*north_wall_texture;
+	void	*south_wall_texture;
+	void	*west_wall_texture;
+	void	*east_wall_texture;
+	void	*floor;
+	void	*ceiling;
+}	t_image;
+
+typedef struct s_data
+{
+	t_image	assets;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_map	*map;
+}	t_data;
 
 ///////////////////////////////////////MAP_PARSING//////////////////////////////
 
@@ -73,5 +91,13 @@ void	print_map(char **map);
 #define MAP_IS_INVALID "elle est naze ta carte on dirait du gruyere zebi\n"
 
 int		parse_map(t_map *map);
+
+///////////////////////////////////////RENDERING////////////////////////////////
+
+//manage_window.c
+
+#define MLX_POINTER_FAIL "le pointeur mlx a chie zebi\n"
+
+void	manage_window(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:00:40 by marc              #+#    #+#             */
-/*   Updated: 2024/12/10 13:42:20 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:02:04 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,7 @@ int	main(int argc, char **argv)
 		if (check_and_open_map(argv[1], &map))
 		{
 			if (parse_map(&map))
-			{
-				ft_printf("map is valid\n");
-				print_map(map.map);
-			}
-			else
-				ft_printf("map is invalid\n");
+				manage_window(&map);
 			free_map(&map);
 		}
 		else
