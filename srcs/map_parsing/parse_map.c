@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:04:01 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/06 17:31:11 by emfourni         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:30:53 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,8 @@ int validate_edge_row(char *row, int index_row, t_map *map)
 	int (len_row) = ft_strlen(row);
 	int (len_next_row) = ft_strlen(map->map[1]);
 
-	if (index_row == 0)
-	{
-		if (map->map[index_row + 1][len_row] != '1' && len_row < len_next_row)
+	if (index_row == 0 && map->map[index_row + 1][len_row] != '1' && len_row < len_next_row)
 			return (0);
-	}
 	while (row[i])
 	{
 		if (row[i] != '1' && row[i] != ' ')
@@ -78,17 +75,21 @@ int validate_edge_row(char *row, int index_row, t_map *map)
 
 int	validate_map_interior(char **map, int rows)
 {
-	int row = 1;
+	int (row) = 1;
+	int	(len_row) = 0;
 
 	while (row < rows - 1)
 	{
 		int col = 0;
 		while (map[row][col])
 		{
+			len_row = ft_strlen(map[row]);
 			if (IS_CELL_SUURROUNDED(map[row][col]))
 			{
 				if (!is_surrounded_by_walls(map, row, col, rows))
-					return ( 0);
+					return (0);
+				if (map[row + 1][len_row] != '1' && len_row < ft_strlen(map[row + 1]))
+					return (0);
 			}
 			col++;
 		}
