@@ -60,7 +60,7 @@ char **free_line_map(char **map)
 	int	(free_line) = 0;
 	int	(shift_index) = 0;
 
-	while (free_line < 6 && map[free_line]) //the first six lines after the split are always the map info only not the map itself so I need to shift the map 6 lines down
+	while (free_line < 6 && map[free_line]) 
 	{
 		free(map[free_line]);
 		free_line++;

@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2024/12/10 17:02:34 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:04:18 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ int	on_keypress(int keysym, t_data *data)
 {
 	if (keysym == 65307)
 		mlx_loop_end(data->mlx_ptr);
+	// else if (keysym == KEY_W)
+    //     player_move(keysym, data);
+    // else if (keysym == KEY_A)
+    //     player_move(keysym, data);
+    // else if (keysym == KEY_S)
+    //     player_move(keysym, data);
+    // else if (keysym == KEY_D)
+    //     player_move(keysym, data);
 	return (0);
 }
 
@@ -27,7 +35,7 @@ static void	*init_window(t_data data)
 	if (!win_ptr)
 	{
 		mlx_destroy_display(data.mlx_ptr);
-		return (free(data.mlx_ptr), ft_printf("Error\n"MLX_POINTER_FAIL), NULL);
+		return (free(data.mlx_ptr), NULL);
 	}
 	return (win_ptr);
 }

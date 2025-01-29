@@ -46,7 +46,7 @@ static void	fill_floor_rgb(char *res, int index, t_map *map)
 		return ;
 	}
 	map->floor_red = ft_atoi(int_tab[0]);
-	map->floor_green= ft_atoi(int_tab[1]);
+	map->floor_green = ft_atoi(int_tab[1]);
 	map->floor_blue = ft_atoi(int_tab[2]);
 	free(temp);
 	ft_free_tab(int_tab);
@@ -84,8 +84,6 @@ int	check_and_open_map(char *file_name, t_map *map)
 	char	*line;
 	char	*temp;
 
-	if (ft_strncmp(".cub", &file_name[ft_strlen(file_name) - 4], 4) != 0)
-		return (ft_printf("Error\n"BAD_FILE_NAME), 0);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 1)
 		return (ft_printf("Error\n"BAD_OPENING), close(fd), 0);

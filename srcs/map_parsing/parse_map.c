@@ -73,29 +73,29 @@ int validate_edge_row(char *row, int index_row, t_map *map)
 	return (1);
 }
 
-int	validate_map_interior(char **map, int rows)
+int validate_map_interior(char **map, int rows)
 {
-	int (row) = 1;
-	int	(len_row) = 0;
+    int row = 1;
+    int len_row = 0;
 
-	while (row < rows - 1)
-	{
-		int col = 0;
-		while (map[row][col])
-		{
-			len_row = ft_strlen(map[row]);
-			if (IS_CELL_SUURROUNDED(map[row][col]))
-			{
-				if (!is_surrounded_by_walls(map, row, col, rows))
-					return (0);
-				if (map[row + 1][len_row] != '1' && len_row < ft_strlen(map[row + 1]))
-					return (0);
-			}
-			col++;
-		}
-		row++;
-	}
-	return (1);
+    while (row < rows - 1)
+    {
+        int col = 0;
+        while (map[row][col])
+        {
+            len_row = ft_strlen(map[row]);
+            if (IS_CELL_SUURROUNDED(map[row][col]))
+            {
+                if (!is_surrounded_by_walls(map, row, col, rows))
+                    return (0);
+                if (map[row + 1] && len_row < ft_strlen(map[row + 1]) && map[row + 1][len_row] != '1')
+                    return (0);
+            }
+            col++;
+        }
+        row++;
+    }
+    return (1);
 }
 
 int parse_map(t_map *map)

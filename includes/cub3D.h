@@ -6,7 +6,7 @@
 /*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2024/12/10 16:19:01 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:05:51 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ typedef struct s_data
 	t_image	assets;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*img_ptr;
+	int		img_width;
+	int		img_height;
 	t_map	*map;
 }	t_data;
 
@@ -96,8 +99,18 @@ int		parse_map(t_map *map);
 
 //manage_window.c
 
+#define KEY_W 13
+#define KEY_A 0
+#define KEY_S 1
+#define KEY_D 2
 #define MLX_POINTER_FAIL "le pointeur mlx a chie zebi\n"
 
 void	manage_window(t_map *map);
+
+//load_assets.c
+
+void	load_assets(t_data *data);
+void    *load_image(t_data *data, char *path);
+
 
 #endif
