@@ -89,7 +89,7 @@ int	check_and_open_map(char *file_name, t_map *map)
 		return (ft_printf("Error\n"BAD_OPENING), close(fd), 0);
 	res = get_next_line(fd);
 	if (!res)
-		return (close(fd), 0);
+	 	return (ft_printf("Error\nEmpty map\n"), close(fd), 0);
 	while (res)
 	{
 		line = get_next_line(fd);
