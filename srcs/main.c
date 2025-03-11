@@ -34,8 +34,8 @@ int	main(int argc, char **argv)
 		{
 			if (parse_map(&map))
 				manage_window(&map);
+			free_map(&map);
 		}
-		free_map(&map);
 	}
 	else
 		ft_printf("Error\nInvalid arguments\n");
