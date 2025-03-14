@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/06 15:30:47 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:32:58 by alia             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	check_and_open_map(char *file_name, t_map *map)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 1)
-		return (ft_printf("Error\n"BAD_OPENING), close(fd), 0);
+		return (ft_printf("Error\n"BAD_OPENING), 0);
 	res = get_next_line(fd);
 	if (!res)
 	 	return (ft_printf("Error\nEmpty map\n"), close(fd), 0);
