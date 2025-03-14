@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:04:01 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/10 14:15:31 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/03/14 11:54:59 by alia             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	check_char_map(char **map, t_map *pos_player)
 			{
 				pos_player->start_y = row;
 				pos_player->start_x = col;
+				pos_player->player_orientation = map[row][col];
 				seen++;
 			}
 			col++;
@@ -46,7 +47,7 @@ int	is_surrounded_by_walls(char **map, int row, int col, int rows)
 	int (current_row_length) = ft_strlen(map[row]);
 
 	if (row == 0 || col >= current_row_length || map[row - 1][col] == ' ')
-		return ( 0);
+		return (0);
 	if (row == rows - 1 || col >= ft_strlen(map[row + 1]) || map[row + 1][col] == ' ')
 		return (0);
 	if (col == 0 || map[row][col - 1] == ' ')

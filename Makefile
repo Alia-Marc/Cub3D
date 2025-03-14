@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+         #
+#    By: alia <alia@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
-#    Updated: 2024/12/10 16:15:04 by emfourni         ###   ########.fr        #
+#    Updated: 2025/03/14 16:05:11 by alia             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME = cub3D
 
 INCLUDES = includes/cub3D.h
 
-RENDERING = srcs/rendering/manage_window.c \
+RENDERING = srcs/rendering/manage_window.c srcs/rendering/init.c \
 
 PARSING = srcs/map_parsing/map_creation.c srcs/map_parsing/map_creation_utils.c srcs/map_parsing/parse_map.c \
 			srcs/map_parsing/map_creation_utils2.c \
 
-SRCS = $(RENDERING) $(PARSING)
+EVENTS = srcs/events/hooks.c srcs/events/events.c \
+
+SRCS = $(RENDERING) $(PARSING) $(EVENTS)
 
 CC = cc -Iincludes -Ilibft -g3
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/01/29 19:05:51 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:32:06 by alia             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 # include "../libft/libft.h"
 # include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -32,8 +33,9 @@ typedef struct s_map
 	int			ceiling_red;
 	int			ceiling_green;
 	int			ceiling_blue;
-	float		start_y;
-	float		start_x;
+	double		start_y;
+	double		start_x;
+	char		player_orientation;
 	int			nb_rows;
 }	t_map;
 
@@ -47,15 +49,37 @@ typedef	struct s_assets
 	void	*ceiling;
 }	t_image;
 
+typedef struct s_player
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+}	t_player;
+
+typedef struct s_rendering
+{
+	double	time;
+	double	oldTime;
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	
+}	t_rendering;
+
 typedef struct s_data
 {
-	t_image	assets;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	int		img_width;
-	int		img_height;
-	t_map	*map;
+	t_image		assets;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	int			img_width;
+	int			img_height;
+	t_map		*map;
+	t_player	player;
+	t_rendering	rendering;
 }	t_data;
 
 ///////////////////////////////////////MAP_PARSING//////////////////////////////
@@ -105,12 +129,22 @@ int		parse_map(t_map *map);
 #define KEY_D 2
 #define MLX_POINTER_FAIL "le pointeur mlx a chie zebi\n"
 
-void	manage_window(t_map *map);
+void	manage_window(t_data *data);
 
 //load_assets.c
 
 void	load_assets(t_data *data);
 void    *load_image(t_data *data, char *path);
+void	init_and_launch(t_map *map);
+
+
+///////////////////////////////////////EVENTS////////////////////////////////
+
+void	hooks(t_data *g);
+int		handle_no_event(t_data *g);
+int		handle_keypress(int keycode, t_data *g);
+int		handle_keyrelease(int keycode, void *g);
+int		exit_game(t_data *g);
 
 
 #endif

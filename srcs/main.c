@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:00:40 by marc              #+#    #+#             */
-/*   Updated: 2025/01/29 19:09:17 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:08:43 by alia             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 		if (check_and_open_map(argv[1], &map))
 		{
 			if (parse_map(&map))
-				manage_window(&map);
+				init_and_launch(&map);
 			free_map(&map);
 		}
 	}
