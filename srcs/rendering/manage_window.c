@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marc <marc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/03/14 17:49:17 by alia             ###   ########.fr       */
+/*   Updated: 2025/03/28 15:49:46 by marc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ void	manage_window(t_data *data)
 	{
 		free_map(data->map);
 		ft_printf("Error\n"MLX_POINTER_FAIL);
+		exit(1);
 	}
 	data->win_ptr = init_window(data);
 	if (!data->win_ptr)
 	{
 		free_map(data->map);
+		free(data->mlx_ptr);
 		ft_printf("Error\n"MLX_POINTER_FAIL);
+		exit(1);
 	}
 	//mlx_hook(data->win_ptr, 17, 0, mlx_loop_end, data->mlx_ptr);
 	// mlx_key_hook(data->win_ptr, &on_keypress, &data);
