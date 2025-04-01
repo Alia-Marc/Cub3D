@@ -1,0 +1,104 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/01 17:01:18 by malia             #+#    #+#             */
+/*   Updated: 2025/04/01 19:28:46 by malia            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/cub3D.h"
+
+void	calculate_ray_dir(t_data *g, int x)
+{
+	double	camera_x;
+
+	camera_x = 2 * x / (double)g->win_width - 1;
+	g->dda.ray_dir_x = g->player.dir_x + g->player.plane_x * camera_x;
+	g->dda.ray_dir_y = g->player.dir_y + g->player.plane_y * camera_x;
+}
+
+void	calculate_side_dist(t_data *g)
+{
+	if (g->dda.ray_dir_x < 0)
+	{
+		g->dda.step_x = -1;
+		g->dda.side_dist_x = (g->player.pos_x - g->dda.map_x)
+			* g->dda.delta_dist_x;
+	}
+	else
+	{
+		g->dda.step_x = 1;
+		g->dda.side_dist_x = (g->player.pos_x + 1.0 - g->dda.map_x)
+			* g->dda.delta_dist_x;
+	}
+	if (g->dda.ray_dir_y < 0)
+	{
+		g->dda.step_y = -1;
+		g->dda.side_dist_y = (g->player.pos_y - g->dda.map_y)
+			* g->dda.delta_dist_y;
+	}
+	else
+	{
+		g->dda.step_y = 1;
+		g->dda.side_dist_y = (g->player.pos_y + 1.0 - g->dda.map_y)
+			* g->dda.delta_dist_y;
+	}
+}
+
+void	init_dda(t_data *g)
+{
+	g->dda.map_x = (int)g->player.pos_x;
+	g->dda.map_y = (int)g->player.pos_y;
+	if (g->dda.ray_dir_x == 0)
+		g->dda.delta_dist_x = 1e30;
+	else
+		g->dda.delta_dist_x = fabs(1 / g->dda.ray_dir_x);
+	if (g->dda.ray_dir_y == 0)
+		g->dda.delta_dist_y = 1e30;
+	else
+		g->dda.delta_dist_y = fabs(1 / g->dda.ray_dir_y);
+	calculate_side_dist(g);
+}
+
+void	perform_dda(t_data *g)
+{
+	int	hit;
+
+	hit = 0;
+	while (!hit)
+	{
+		if (g->dda.side_dist_x < g->dda.side_dist_y)
+		{
+			g->dda.side_dist_x += g->dda.delta_dist_x;
+			g->dda.map_x += g->dda.step_x;
+			g->dda.side = 0;
+		}
+		else
+		{
+			g->dda.side_dist_y += g->dda.delta_dist_y;
+			g->dda.map_y += g->dda.step_y;
+			g->dda.side = 1;
+		}
+		if (g->map->map[g->dda.map_x][g->dda.map_y] == '1')
+			hit = 1;
+	}
+	if (!g->dda.side)
+		g->dda.perp_wall_dist = (g->dda.side_dist_x - g->dda.delta_dist_x);
+	else
+		g->dda.perp_wall_dist = (g->dda.side_dist_y - g->dda.delta_dist_y);
+}
+
+void	calculate_draw_limits(t_data *g)
+{
+	g->dda.line_height = (int)(g->win_height / g->dda.perp_wall_dist);
+	g->dda.draw_start = -g->dda.line_height / 2 + g->win_height / 2;
+	if (g->dda.draw_start < 0)
+		g->dda.draw_start = 0;
+	g->dda.draw_end = g->dda.line_height / 2 + g->win_height / 2;
+	if (g->dda.draw_end >= g->win_height)
+		g->dda.draw_end = g->win_height - 1;
+}

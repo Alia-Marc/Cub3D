@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/01 18:38:36 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/01 19:27:30 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 
 typedef struct s_map
 {
@@ -73,6 +74,11 @@ typedef struct s_rendering
 	double	delta_dist_y;
 	int		step_x;
 	int		step_y;
+	int		side;
+	double	perp_wall_dist;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 	
 }	t_rendering;
 
@@ -146,6 +152,17 @@ void	load_assets(t_data *data);
 void    *load_image(t_data *data, char *path);
 void	init_and_launch(t_map *map);
 
+//dda.c
+
+void	calculate_ray_dir(t_data *g, int x);
+void	init_dda(t_data *g);
+void	perform_dda(t_data *g);
+void	calculate_draw_limits(t_data *g);
+
+//draw_dda.c
+
+void	dda(t_data *g);
+
 
 ///////////////////////////////////////EVENTS////////////////////////////////
 
@@ -154,6 +171,7 @@ int		handle_no_event(t_data *g);
 int		handle_keypress(int keycode, t_data *g);
 int		handle_keyrelease(int keycode, void *g);
 int		exit_game(t_data *g);
+
 
 
 #endif
