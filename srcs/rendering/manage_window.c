@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marc <marc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/03/28 15:49:46 by marc             ###   ########.fr       */
+/*   Updated: 2025/04/01 18:01:11 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ static void	*init_window(t_data *data)
 {
 	void	*win_ptr;
 
-	win_ptr = mlx_new_window(data->mlx_ptr, 1024, 1024, "TON CUB EN 3D");
+	data->win_width = 1024;
+	data->win_height = 1024;
+	win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_height, "TON CUB EN 3D");
 	if (!win_ptr)
 	{
 		mlx_destroy_display(data->mlx_ptr);

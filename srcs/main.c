@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:00:40 by marc              #+#    #+#             */
-/*   Updated: 2025/03/14 15:08:43 by alia             ###   ########.fr       */
+/*   Updated: 2025/04/01 18:07:58 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,26 @@
 // 	}
 // }
 
+void	print_map_v2(char **map)
+{
+	int x = 0;
+	int y = 0;
+	while (map[x])
+	{
+		ft_printf("{");
+		y = 0;
+		while (map[x][y])
+		{
+			ft_printf("%c", map[x][y]);
+			y++;
+			if (map[x][y])
+				ft_printf(", ");
+		}
+		ft_printf("}\n");
+		x++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	map;
@@ -34,6 +54,7 @@ int	main(int argc, char **argv)
 		{
 			if (parse_map(&map))
 				init_and_launch(&map);
+			//print_map_v2(map.map);
 			free_map(&map);
 		}
 	}

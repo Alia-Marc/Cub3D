@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/03/14 16:32:06 by alia             ###   ########.fr       */
+/*   Updated: 2025/04/01 18:38:36 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,28 @@ typedef	struct s_assets
 
 typedef struct s_player
 {
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 }	t_player;
 
 typedef struct s_rendering
 {
 	double	time;
-	double	oldTime;
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
+	double	old_time;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
 	
 }	t_rendering;
 
@@ -77,9 +84,11 @@ typedef struct s_data
 	void		*img_ptr;
 	int			img_width;
 	int			img_height;
+	int			win_height;
+	int			win_width;
 	t_map		*map;
 	t_player	player;
-	t_rendering	rendering;
+	t_rendering	dda;
 }	t_data;
 
 ///////////////////////////////////////MAP_PARSING//////////////////////////////

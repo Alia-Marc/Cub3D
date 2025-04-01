@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:42:03 by alia              #+#    #+#             */
-/*   Updated: 2025/03/14 14:59:42 by alia             ###   ########.fr       */
+/*   Updated: 2025/04/01 18:04:46 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_and_launch(t_map *map)
 {
-	t_data game;
+	t_data g;
 
-	game.map = map;
-	manage_window(&game);
+	g.map = map;
+	manage_window(&g);
 }
