@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:30:34 by alia              #+#    #+#             */
-/*   Updated: 2025/03/14 17:19:38 by alia             ###   ########.fr       */
+/*   Updated: 2025/04/04 20:11:25 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	handle_no_event(t_data *g)
 {
+	dda(g);
+	mlx_put_image_to_window(g->mlx_ptr, g->win_ptr, g->window.img, 0, 0);
 	return (0);
 }
 

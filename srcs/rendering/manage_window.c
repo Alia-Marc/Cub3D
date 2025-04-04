@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/01 18:01:11 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/04 20:24:05 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	manage_window(t_data *data)
 	}
 	//mlx_hook(data->win_ptr, 17, 0, mlx_loop_end, data->mlx_ptr);
 	// mlx_key_hook(data->win_ptr, &on_keypress, &data);
+	data->window = init_screen(data);
+	//dda(data);
 	hooks(data);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);

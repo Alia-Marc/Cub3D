@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/01 19:27:30 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/04 20:21:41 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define CUB3D_H
 # include "../libft/libft.h"
 # include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"
+//# include "../mlx_linux/mlx_int.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -48,7 +50,32 @@ typedef	struct s_assets
 	void	*east_wall_texture;
 	void	*floor;
 	void	*ceiling;
-}	t_image;
+
+}	t_assets;
+
+typedef union u_color	t_color;
+
+union					u_color
+{
+	__uint32_t			integer;
+	struct
+	{
+		__uint8_t		r;
+		__uint8_t		g;
+		__uint8_t		b;
+		__uint8_t		a;
+	};
+};
+
+typedef struct s_img
+{
+	void	*img;
+	void	*address;
+	int		height;
+	int		width;
+	t_color	*pixels;
+
+}	t_img;
 
 typedef struct s_player
 {
@@ -62,8 +89,8 @@ typedef struct s_player
 
 typedef struct s_rendering
 {
-	double	time;
-	double	old_time;
+	// double	time;
+	// double	old_time;
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;
@@ -74,6 +101,7 @@ typedef struct s_rendering
 	double	delta_dist_y;
 	int		step_x;
 	int		step_y;
+	double	side_x;
 	int		side;
 	double	perp_wall_dist;
 	int		line_height;
@@ -84,12 +112,10 @@ typedef struct s_rendering
 
 typedef struct s_data
 {
-	t_image		assets;
+	t_assets	assets;
+	t_img		window;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*img_ptr;
-	int			img_width;
-	int			img_height;
 	int			win_height;
 	int			win_width;
 	t_map		*map;
@@ -150,7 +176,11 @@ void	manage_window(t_data *data);
 
 void	load_assets(t_data *data);
 void    *load_image(t_data *data, char *path);
+
+//init.c
 void	init_and_launch(t_map *map);
+t_img	init_img_to_square(t_data *g, char *path);
+t_img	init_screen(t_data *g);
 
 //dda.c
 
@@ -162,6 +192,7 @@ void	calculate_draw_limits(t_data *g);
 //draw_dda.c
 
 void	dda(t_data *g);
+void	draw_vertical_line(t_data *g, t_img texture, int x);
 
 
 ///////////////////////////////////////EVENTS////////////////////////////////

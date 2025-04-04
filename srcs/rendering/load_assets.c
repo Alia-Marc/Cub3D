@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_assets.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:59:19 by emfourni          #+#    #+#             */
-/*   Updated: 2025/01/29 19:03:39 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:37:21 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	load_assets(t_data *data)
     data->assets.south_wall_texture = load_image(data, data->map->south_texture_path);
     data->assets.west_wall_texture = load_image(data, data->map->west_texture_path);
     data->assets.east_wall_texture = load_image(data, data->map->east_texture_path);
-    data->assets.floor = mlx_new_image(data->mlx_ptr, 64, 64);
-    data->assets.ceiling = mlx_new_image(data->mlx_ptr, 64, 64);
+    //data->assets.floor = mlx_new_image(data->mlx_ptr, 64, 64);
+    //data->assets.ceiling = mlx_new_image(data->mlx_ptr, 64, 64);
 }
