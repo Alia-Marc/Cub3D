@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/04 20:21:41 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/08 17:31:55 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ typedef struct s_data
 	t_map		*map;
 	t_player	player;
 	t_rendering	dda;
+	t_img		textures[4];
 }	t_data;
 
 ///////////////////////////////////////MAP_PARSING//////////////////////////////
@@ -193,6 +194,7 @@ void	calculate_draw_limits(t_data *g);
 
 void	dda(t_data *g);
 void	draw_vertical_line(t_data *g, t_img texture, int x);
+t_img	choose_wall_texture(t_data *g);
 
 
 ///////////////////////////////////////EVENTS////////////////////////////////

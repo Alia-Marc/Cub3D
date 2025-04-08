@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/04 20:24:05 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/08 19:17:29 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	*init_window(t_data *data)
 {
 	void	*win_ptr;
 
-	data->win_width = 1024;
-	data->win_height = 1024;
+	data->win_width = 1080;
+	data->win_height = 1080;
 	win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_height, "TON CUB EN 3D");
 	if (!win_ptr)
 	{
@@ -63,6 +63,12 @@ void	manage_window(t_data *data)
 	// mlx_key_hook(data->win_ptr, &on_keypress, &data);
 	data->window = init_screen(data);
 	//dda(data);
+	// dda(data);
+	// mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->window.img, 0, 0);
+	data->textures[0] = init_img_to_square(data, data->map->north_texture_path);
+	data->textures[1] = init_img_to_square(data, data->map->south_texture_path);
+	data->textures[2] = init_img_to_square(data, data->map->west_texture_path);
+	data->textures[3] = init_img_to_square(data, data->map->east_texture_path);
 	hooks(data);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);

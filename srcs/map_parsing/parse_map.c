@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:04:01 by emilefourni       #+#    #+#             */
-/*   Updated: 2025/03/14 11:54:59 by alia             ###   ########.fr       */
+/*   Updated: 2025/04/08 19:08:05 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	check_char_map(char **map, t_map *pos_player)
 				return(ft_printf("Error\n"BAD_CHAR_MAP), 0);
 			if (IS_POSITION_PLAYER(map[row][col]))
 			{
-				pos_player->start_y = row;
-				pos_player->start_x = col;
+				pos_player->start_x = row;
+				pos_player->start_y = col;
 				pos_player->player_orientation = map[row][col];
 				seen++;
 			}
