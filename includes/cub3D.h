@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/08 17:31:55 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 18:05:41 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
+# include <stdbool.h>
 
 typedef struct s_map
 {
@@ -85,6 +86,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+
 }	t_player;
 
 typedef struct s_rendering
@@ -122,6 +124,9 @@ typedef struct s_data
 	t_player	player;
 	t_rendering	dda;
 	t_img		textures[4];
+	t_color		floor;
+	t_color		ceiling;
+
 }	t_data;
 
 ///////////////////////////////////////MAP_PARSING//////////////////////////////
@@ -182,6 +187,7 @@ void    *load_image(t_data *data, char *path);
 void	init_and_launch(t_map *map);
 t_img	init_img_to_square(t_data *g, char *path);
 t_img	init_screen(t_data *g);
+t_color	init_color(int red, int green, int blue);
 
 //dda.c
 
@@ -195,12 +201,13 @@ void	calculate_draw_limits(t_data *g);
 void	dda(t_data *g);
 void	draw_vertical_line(t_data *g, t_img texture, int x);
 t_img	choose_wall_texture(t_data *g);
+void	draw_floor_and_ceiling(t_data *g);
 
 
 ///////////////////////////////////////EVENTS////////////////////////////////
 
 void	hooks(t_data *g);
-int		handle_no_event(t_data *g);
+int		update(t_data *g);
 int		handle_keypress(int keycode, t_data *g);
 int		handle_keyrelease(int keycode, void *g);
 int		exit_game(t_data *g);

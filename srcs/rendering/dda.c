@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:01:18 by malia             #+#    #+#             */
-/*   Updated: 2025/04/08 19:07:38 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 17:41:18 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	calculate_draw_limits(t_data *g)
 	if (g->dda.draw_end >= g->win_height)
 		g->dda.draw_end = g->win_height - 1;
 	//printf("%f\n", g->dda.perp_wall_dist);
-	ft_printf("%d, %d, %d, %d\n", g->dda.line_height, g->win_height, g->dda.draw_start, g->dda.draw_end, g->dda.perp_wall_dist);
+	//ft_printf("%d, %d, %d, %d\n", g->dda.line_height, g->win_height, g->dda.draw_start, g->dda.draw_end, g->dda.perp_wall_dist);
 }

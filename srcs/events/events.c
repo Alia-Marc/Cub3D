@@ -6,14 +6,15 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:30:34 by alia              #+#    #+#             */
-/*   Updated: 2025/04/08 17:02:11 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 17:33:23 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-int	handle_no_event(t_data *g)
+int	update(t_data *g)
 {
+	draw_floor_and_ceiling(g);
 	dda(g);
 	mlx_put_image_to_window(g->mlx_ptr, g->win_ptr, g->window.img, 0, 0);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:42:03 by alia              #+#    #+#             */
-/*   Updated: 2025/04/08 19:06:00 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 18:21:39 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_player(t_data *g)
 		g->player.dir_x = 0;
 		g->player.dir_y = 1;
 	}
-	printf("pposx %f, pposy %f,  ", g->player.pos_x, g->player.pos_y);
+	//printf("pposx %f, pposy %f,  ", g->player.pos_x, g->player.pos_y);
 }
 
 t_img	init_img_to_square(t_data *g, char *path)
@@ -98,11 +98,25 @@ t_img	init_screen(t_data *g)
 	return (screen);
 }
 
+t_color	init_color(int red, int green, int blue)
+{
+	t_color	color;
+
+	color.r = red;
+	color.g = green;
+	color.b = blue;
+	color.a = 0;
+	return (color);
+}
+
 void	init_and_launch(t_map *map)
 {
 	t_data g;
 
 	g.map = map;
 	init_player(&g);
+	data->floor = init_color(data->map->floor_red, data->map->floor_green, data->map->floor_blue);
+	data->ceiling = init_color(data->map->ceiling_red, data->map->ceiling_green, data->map->ceiling_blue);
+	printf("%d %d %d, %d %d %d \n", data->floor.r, data->floor.g, data->floor.b, data->map->ceiling_red, data->map->ceiling_green, data->map->ceiling_blue);
 	manage_window(&g);
 }

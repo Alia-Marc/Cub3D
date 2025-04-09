@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 19:18:30 by malia             #+#    #+#             */
-/*   Updated: 2025/04/08 18:55:44 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 17:45:48 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,31 @@ void	draw_vertical_line(t_data *g, t_img texture, int x)
 				g->window.pixels[pos_y * g->window.width + pos_x] = texture.pixels[texture.height * tex_y + tex_x];
 		}
 		tex_pos += step;
+		pos_y++;
+	}
+}
+
+void	draw_floor_and_ceiling(t_data *g)
+{
+	int		pos_y;
+	bool	floor;
+	int		pos_x;
+
+	pos_y = 0;
+	floor = false;
+	while (pos_y < g->win_height)
+	{
+		if (!floor && pos_y > g->win_height / 2)
+			floor = true;
+		pos_x = 0;
+		while (pos_x < g->win_width)
+		{
+			if (floor)
+				g->window.pixels[pos_y * g->window.width + pos_x] = g->floor;
+			else
+				g->window.pixels[pos_y * g->window.width + pos_x] = g->ceiling;
+			pos_x++;
+		}
 		pos_y++;
 	}
 }
