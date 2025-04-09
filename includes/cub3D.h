@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/09 18:05:41 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 19:22:00 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 	double		start_x;
 	char		player_orientation;
 	int			nb_rows;
+
 }	t_map;
 
 typedef	struct s_assets
@@ -202,6 +203,11 @@ void	dda(t_data *g);
 void	draw_vertical_line(t_data *g, t_img texture, int x);
 t_img	choose_wall_texture(t_data *g);
 void	draw_floor_and_ceiling(t_data *g);
+
+//exit.c
+void	exit_free_all(t_data *g, char *message, int exit_code);
+void	free_img(t_data *g, t_img *img);
+void	free_all(t_data *g);
 
 
 ///////////////////////////////////////EVENTS////////////////////////////////

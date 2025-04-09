@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:30:34 by alia              #+#    #+#             */
-/*   Updated: 2025/04/09 17:33:23 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 18:47:50 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,18 @@ int	update(t_data *g)
 
 int	handle_keypress(int keycode, t_data *g)
 {
-    if (keycode == XK_Escape)
-        mlx_loop_end(g->mlx_ptr);
-    return (0);
+	if (keycode == XK_Escape)
+		exit_free_all(g, "Exited successfully\n", 0);
+	return (0);
 }
 
 int	handle_keyrelease(int keycode, void *g)
 {
-    return (0);
+	return (0);
 }
 
 int	exit_game(t_data *g)
 {
-	if (g->win_ptr)
-		mlx_destroy_window(g->mlx_ptr, g->win_ptr);
+	//exit_free_all(g, "Exited successfully\n", 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:42:03 by alia              #+#    #+#             */
-/*   Updated: 2025/04/09 18:21:39 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 19:36:05 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,13 @@ t_img	init_img_to_square(t_data *g, char *path)
 
 	texture.img = mlx_xpm_file_to_image(g->mlx_ptr, path, &width, &height);
 	if (!texture.img)
-	{
-		ft_printf("error init img");
-		exit(1);
-		//clean_exit();
-	}
+		exit_free_all(g, "Failed to init texture image\n", 1);
 	if (height > width)
 		height = width;
 	else
 		width = height;
 	if (height > 1000)
-	{
-		ft_printf("error img too big");
-		exit(1);
-		//clean_exit();
-	}
+		exit_free_all(g, "Image too big\n", 1);
 	texture.height = height;
 	texture.width = width;
 	texture.address = mlx_get_data_addr(texture.img, &t[0], &t[1], &t[2]);
@@ -87,10 +79,7 @@ t_img	init_screen(t_data *g)
 
 	screen.img = mlx_new_image(g->mlx_ptr, g->win_height, g->win_width);
 	if (!screen.img)
-	{
-		ft_printf("window img error\n");
-		exit(0);
-	}
+		exit_free_all(g, "Failed to init screen image\n", 1);
 	screen.height = g->win_height;
 	screen.width = g->win_width;
 	screen.address = mlx_get_data_addr(screen.img, &t[0], &t[1], &t[2]);
@@ -114,9 +103,15 @@ void	init_and_launch(t_map *map)
 	t_data g;
 
 	g.map = map;
+	g.window.img = NULL;
+	g.textures[0].img = NULL;
+	g.textures[1].img = NULL;
+	g.textures[2].img = NULL;
+	g.textures[3].img = NULL;
 	init_player(&g);
-	data->floor = init_color(data->map->floor_red, data->map->floor_green, data->map->floor_blue);
-	data->ceiling = init_color(data->map->ceiling_red, data->map->ceiling_green, data->map->ceiling_blue);
-	printf("%d %d %d, %d %d %d \n", data->floor.r, data->floor.g, data->floor.b, data->map->ceiling_red, data->map->ceiling_green, data->map->ceiling_blue);
+	g.floor = init_color(g.map->floor_red, g.map->floor_green, g.map->floor_blue);
+	g.ceiling = init_color(g.map->ceiling_red, g.map->ceiling_green, g.map->ceiling_blue);
+	//printf("%d %d %d, %d %d %d \n", g.floor.r, g.floor.g, g.floor.b, g.map->ceiling_red, g.map->ceiling_green, g.map->ceiling_blue);
+	//printf("%d, %d\n", g.floor.integer, g.ceiling.integer);
 	manage_window(&g);
 }

@@ -6,7 +6,7 @@
 #    By: malia <malia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
-#    Updated: 2025/04/01 19:25:34 by malia            ###   ########.fr        #
+#    Updated: 2025/04/09 18:37:23 by malia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3D
 
 INCLUDES = includes/cub3D.h
 
-RENDERING = srcs/rendering/manage_window.c srcs/rendering/init.c srcs/rendering/dda.c srcs/rendering/draw_dda.c \
+RENDERING = srcs/rendering/manage_window.c srcs/rendering/init.c srcs/rendering/dda.c srcs/rendering/draw_dda.c srcs/rendering/exit.c \
 
 PARSING = srcs/map_parsing/map_creation.c srcs/map_parsing/map_creation_utils.c srcs/map_parsing/parse_map.c \
 			srcs/map_parsing/map_creation_utils2.c \

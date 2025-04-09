@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/09 18:21:33 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 19:30:22 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,16 @@ void	manage_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-	{
-		free_map(data->map);
-		ft_printf("Error\n"MLX_POINTER_FAIL);
-		exit(1);
-	}
+		exit_free_all(data, MLX_POINTER_FAIL, 1);
 	data->win_ptr = init_window(data);
 	if (!data->win_ptr)
-	{
-		free_map(data->map);
-		free(data->mlx_ptr);
-		ft_printf("Error\n"MLX_POINTER_FAIL);
-		exit(1);
-	}
-	//mlx_hook(data->win_ptr, 17, 0, mlx_loop_end, data->mlx_ptr);
-	// mlx_key_hook(data->win_ptr, &on_keypress, &data);
+		exit_free_all(data, MLX_POINTER_FAIL, 1);
 	data->window = init_screen(data);
-	//dda(data);
-	// dda(data);
-	// mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->window.img, 0, 0);
 	data->textures[0] = init_img_to_square(data, data->map->north_texture_path);
 	data->textures[1] = init_img_to_square(data, data->map->south_texture_path);
 	data->textures[2] = init_img_to_square(data, data->map->west_texture_path);
 	data->textures[3] = init_img_to_square(data, data->map->east_texture_path);
 	hooks(data);
 	mlx_loop(data->mlx_ptr);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
+	exit_free_all(data, "Exited successfully\n", 0);
 }

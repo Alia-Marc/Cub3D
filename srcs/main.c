@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:00:40 by marc              #+#    #+#             */
-/*   Updated: 2025/04/08 16:55:22 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 18:47:01 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ int	main(int argc, char **argv)
 		{
 			if (parse_map(&map))
 				init_and_launch(&map);
-			//print_map_v2(map.map);
-			free_map(&map);
 		}
 	}
 	else
-		ft_printf("Error\nInvalid arguments\n");
+		return(ft_fdprintf(2, "Error\nInvalid arguments\n"), 1);
 	return (0);
 }
