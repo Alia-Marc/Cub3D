@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:42:03 by alia              #+#    #+#             */
-/*   Updated: 2025/04/09 19:36:05 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/09 19:39:53 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ void	init_and_launch(t_map *map)
 	g.textures[2].img = NULL;
 	g.textures[3].img = NULL;
 	init_player(&g);
-	g.floor = init_color(g.map->floor_red, g.map->floor_green, g.map->floor_blue);
-	g.ceiling = init_color(g.map->ceiling_red, g.map->ceiling_green, g.map->ceiling_blue);
+	g.floor = init_color(g.map->floor_blue, g.map->floor_green, g.map->floor_red);
+	g.ceiling = init_color(g.map->ceiling_blue, g.map->ceiling_green, g.map->ceiling_red);
 	//printf("%d %d %d, %d %d %d \n", g.floor.r, g.floor.g, g.floor.b, g.map->ceiling_red, g.map->ceiling_green, g.map->ceiling_blue);
 	//printf("%d, %d\n", g.floor.integer, g.ceiling.integer);
 	manage_window(&g);
