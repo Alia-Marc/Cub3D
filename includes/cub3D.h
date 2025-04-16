@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/09 19:22:00 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/16 17:30:40 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <stdbool.h>
+
+# define MOV_SPEED 0.04
+# define ROT_SPEED 0.05
 
 typedef struct s_map
 {
@@ -44,16 +47,16 @@ typedef struct s_map
 
 }	t_map;
 
-typedef	struct s_assets
-{
-	void	*north_wall_texture;
-	void	*south_wall_texture;
-	void	*west_wall_texture;
-	void	*east_wall_texture;
-	void	*floor;
-	void	*ceiling;
+// typedef	struct s_assets
+// {
+// 	void	*north_wall_texture;
+// 	void	*south_wall_texture;
+// 	void	*west_wall_texture;
+// 	void	*east_wall_texture;
+// 	void	*floor;
+// 	void	*ceiling;
 
-}	t_assets;
+// }	t_assets;
 
 typedef union u_color	t_color;
 
@@ -115,7 +118,7 @@ typedef struct s_rendering
 
 typedef struct s_data
 {
-	t_assets	assets;
+	// t_assets	assets;
 	t_img		window;
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -127,6 +130,7 @@ typedef struct s_data
 	t_img		textures[4];
 	t_color		floor;
 	t_color		ceiling;
+	bool		keys[65535];
 
 }	t_data;
 
@@ -212,11 +216,18 @@ void	free_all(t_data *g);
 
 ///////////////////////////////////////EVENTS////////////////////////////////
 
+//hooks.c
 void	hooks(t_data *g);
+
+//events.c
 int		update(t_data *g);
 int		handle_keypress(int keycode, t_data *g);
-int		handle_keyrelease(int keycode, void *g);
+int		handle_keyrelease(int keycode, t_data *g);
 int		exit_game(t_data *g);
+
+//player_events.c
+void	player_movement(t_data *g, double posx, double posy);
+void	player_rotation(t_data *g);
 
 
 
