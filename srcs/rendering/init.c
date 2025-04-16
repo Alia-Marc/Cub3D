@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:42:03 by alia              #+#    #+#             */
-/*   Updated: 2025/04/16 16:47:56 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/16 18:40:52 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,9 @@ void	init_player(t_data *g)
 		g->player.dir_y = 0;
 	}
 	else if (g->map->player_orientation == 'W')
-	{
-		g->player.plane_x = -0.66;
-		g->player.plane_y = 0;
-		g->player.dir_x = 0;
-		g->player.dir_y = -1;
-	}
+		assign_player_we_values(g, -0.66, -1);
 	else if (g->map->player_orientation == 'E')
-	{
-		g->player.plane_x = 0.66;
-		g->player.plane_y = 0;
-		g->player.dir_x = 0;
-		g->player.dir_y = 1;
-	}
-	//printf("pposx %f, pposy %f,  ", g->player.pos_x, g->player.pos_y);
+		assign_player_we_values(g, 0.66, 1);
 }
 
 t_img	init_img_to_square(t_data *g, char *path)
@@ -98,7 +87,7 @@ t_color	init_color(int red, int green, int blue)
 
 void	init_and_launch(t_map *map)
 {
-	t_data g;
+	t_data	g;
 
 	g.map = map;
 	g.window.img = NULL;
@@ -107,9 +96,9 @@ void	init_and_launch(t_map *map)
 	g.textures[2].img = NULL;
 	g.textures[3].img = NULL;
 	init_player(&g);
-	g.floor = init_color(g.map->floor_blue, g.map->floor_green, g.map->floor_red);
-	g.ceiling = init_color(g.map->ceiling_blue, g.map->ceiling_green, g.map->ceiling_red);
-	//printf("%d %d %d, %d %d %d \n", g.floor.r, g.floor.g, g.floor.b, g.map->ceiling_red, g.map->ceiling_green, g.map->ceiling_blue);
-	//printf("%d, %d\n", g.floor.integer, g.ceiling.integer);
+	g.floor = init_color(g.map->floor_blue, g.map->floor_green,
+			g.map->floor_red);
+	g.ceiling = init_color(g.map->ceiling_blue, g.map->ceiling_green,
+			g.map->ceiling_red);
 	manage_window(&g);
 }

@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:01:18 by malia             #+#    #+#             */
-/*   Updated: 2025/04/09 17:41:18 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/16 18:47:26 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	init_dda(t_data *g)
 {
 	g->dda.map_x = (int)g->player.pos_x;
 	g->dda.map_y = (int)g->player.pos_y;
-	//printf(" mapx : %d, mapy : %d\n", g->dda.map_x, g->dda.map_y);
 	if (g->dda.ray_dir_x == 0)
 		g->dda.delta_dist_x = 1e30;
 	else
@@ -87,15 +86,10 @@ void	perform_dda(t_data *g)
 		if (g->map->map[g->dda.map_x][g->dda.map_y] == '1')
 			hit = 1;
 	}
-	//printf("%f, %f, %f, %f ; ", g->dda.side_dist_x, g->dda.delta_dist_x, g->dda.side_dist_y, g->dda.delta_dist_y);
-	// if (!g->dda.side)
-	// 	g->dda.perp_wall_dist = (g->dda.side_dist_x - g->dda.delta_dist_x);
-	// else
-	// 	g->dda.perp_wall_dist = (g->dda.side_dist_y - g->dda.delta_dist_y);
 	if (!g->dda.side)
-		g->dda.perp_wall_dist = (g->dda.map_x - g->player.pos_x + (1 - g->dda.step_x) / 2) / g->dda.ray_dir_x;
+		g->dda.perp_wall_dist = (g->dda.side_dist_x - g->dda.delta_dist_x);
 	else
-		g->dda.perp_wall_dist = (g->dda.map_y - g->player.pos_y + (1 - g->dda.step_y) / 2) / g->dda.ray_dir_y;
+		g->dda.perp_wall_dist = (g->dda.side_dist_y - g->dda.delta_dist_y);
 }
 
 void	calculate_draw_limits(t_data *g)
@@ -107,6 +101,4 @@ void	calculate_draw_limits(t_data *g)
 	g->dda.draw_end = g->dda.line_height / 2 + g->win_height / 2;
 	if (g->dda.draw_end >= g->win_height)
 		g->dda.draw_end = g->win_height - 1;
-	//printf("%f\n", g->dda.perp_wall_dist);
-	//ft_printf("%d, %d, %d, %d\n", g->dda.line_height, g->win_height, g->dda.draw_start, g->dda.draw_end, g->dda.perp_wall_dist);
 }

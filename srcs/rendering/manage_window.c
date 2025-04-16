@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/16 16:49:18 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/16 18:23:03 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void	*init_window(t_data *data)
 
 	data->win_width = 1080;
 	data->win_height = 1080;
-	win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_height, "TON CUB EN 3D");
+	win_ptr = mlx_new_window(data->mlx_ptr, data->win_width,
+			data->win_height, "TON CUB EN 3D");
 	if (!win_ptr)
 	{
 		mlx_destroy_display(data->mlx_ptr);
@@ -44,7 +45,7 @@ static void	*init_window(t_data *data)
 
 static void	init_keys(t_data *g)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 65535)

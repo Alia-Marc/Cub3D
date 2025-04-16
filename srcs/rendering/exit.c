@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:06:21 by malia             #+#    #+#             */
-/*   Updated: 2025/04/09 19:25:35 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/16 17:57:23 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ void	free_img(t_data *g, t_img *img)
 void	free_all(t_data *g)
 {
 	free_map(g->map);
-
 	free_img(g, &g->textures[0]);
 	free_img(g, &g->textures[1]);
 	free_img(g, &g->textures[2]);
 	free_img(g, &g->textures[3]);
 	free_img(g, &g->window);
-
 	if (g->mlx_ptr && g->win_ptr)
 		mlx_destroy_window(g->mlx_ptr, g->win_ptr);
 	if (g->mlx_ptr)

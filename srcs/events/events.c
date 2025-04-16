@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:30:34 by alia              #+#    #+#             */
-/*   Updated: 2025/04/16 17:23:37 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/16 17:57:08 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ int	handle_keyrelease(int keycode, t_data *g)
 
 int	exit_game(t_data *g)
 {
-	//exit_free_all(g, "Exited successfully\n", 0);
 	return (0);
 }

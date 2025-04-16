@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/16 17:30:40 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/16 18:35:52 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,6 @@ typedef struct s_map
 
 }	t_map;
 
-// typedef	struct s_assets
-// {
-// 	void	*north_wall_texture;
-// 	void	*south_wall_texture;
-// 	void	*west_wall_texture;
-// 	void	*east_wall_texture;
-// 	void	*floor;
-// 	void	*ceiling;
-
-// }	t_assets;
-
 typedef union u_color	t_color;
 
 union					u_color
@@ -95,8 +84,6 @@ typedef struct s_player
 
 typedef struct s_rendering
 {
-	// double	time;
-	// double	old_time;
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;
@@ -118,7 +105,6 @@ typedef struct s_rendering
 
 typedef struct s_data
 {
-	// t_assets	assets;
 	t_img		window;
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -183,16 +169,15 @@ int		parse_map(t_map *map);
 
 void	manage_window(t_data *data);
 
-//load_assets.c
-
-void	load_assets(t_data *data);
-void    *load_image(t_data *data, char *path);
-
 //init.c
 void	init_and_launch(t_map *map);
 t_img	init_img_to_square(t_data *g, char *path);
 t_img	init_screen(t_data *g);
 t_color	init_color(int red, int green, int blue);
+void	init_player(t_data *g);
+
+//init_utils.c
+void	assign_player_we_values(t_data *g, double plane_x, double dir_y);
 
 //dda.c
 

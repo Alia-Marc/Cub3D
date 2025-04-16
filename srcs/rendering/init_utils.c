@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/14 15:27:18 by alia              #+#    #+#             */
-/*   Updated: 2025/04/16 17:56:23 by malia            ###   ########.fr       */
+/*   Created: 2025/04/16 18:28:55 by malia             #+#    #+#             */
+/*   Updated: 2025/04/16 18:35:36 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	hooks(t_data *g)
+void	assign_player_we_values(t_data *g, double plane_x, double dir_y)
 {
-	mlx_hook(g->win_ptr, KeyPress, KeyPressMask, handle_keypress, g);
-	mlx_hook(g->win_ptr, KeyRelease, KeyReleaseMask, handle_keyrelease, g);
-	mlx_hook(g->win_ptr, DestroyNotify, StructureNotifyMask,
-		mlx_loop_end, g->mlx_ptr);
-	mlx_loop_hook(g->mlx_ptr, update, g);
+	g->player.plane_x = plane_x;
+	g->player.plane_y = 0;
+	g->player.dir_x = 0;
+	g->player.dir_y = dir_y;
 }

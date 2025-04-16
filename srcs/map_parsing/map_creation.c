@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alia <alia@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:05:04 by emilefourni       #+#    #+#             */
-/*   Updated: 2025/03/14 10:32:58 by alia             ###   ########.fr       */
+/*   Updated: 2025/04/16 18:16:43 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ static void	fill_floor_rgb(char *res, int index, t_map *map)
 
 static t_map	*fill_struct(char *res, t_map *map)
 {
-	int	(index) = 0;
-
+	int (index) = 0;
 	while (res[index])
 	{
 		if (res[index] == 'N' && (res[index + 1] == 'O' && res[index + 1]))
@@ -77,6 +76,16 @@ static t_map	*fill_struct(char *res, t_map *map)
 	return (map);
 }
 
+static int	fill_map(char *res, t_map *map, int fd)
+{
+	map = fill_struct(res, map);
+	if (!map)
+		return (close(fd), free(res), 0);
+	map->map = ft_split(res, '\n');
+	map->map = free_line_map(map->map);
+	return (close(fd), free(res), 1);
+}
+
 int	check_and_open_map(char *file_name, t_map *map)
 {
 	int		fd;
@@ -89,7 +98,7 @@ int	check_and_open_map(char *file_name, t_map *map)
 		return (ft_printf("Error\n"BAD_OPENING), 0);
 	res = get_next_line(fd);
 	if (!res)
-	 	return (ft_printf("Error\nEmpty map\n"), close(fd), 0);
+		return (ft_printf("Error\nEmpty map\n"), close(fd), 0);
 	while (res)
 	{
 		line = get_next_line(fd);
@@ -103,10 +112,5 @@ int	check_and_open_map(char *file_name, t_map *map)
 	if (res)
 		free(line);
 	init_map(map);
-	map = fill_struct(res, map);
-	if (!map)
-		return (close(fd), free(res), 0);
-	map->map = ft_split(res, '\n');
-	map->map = free_line_map(map->map);
-	return (close(fd), free(res), 1);
+	return (fill_map(res, map, fd));
 }
