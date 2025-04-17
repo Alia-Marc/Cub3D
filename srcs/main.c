@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:00:40 by marc              #+#    #+#             */
-/*   Updated: 2025/04/16 18:05:31 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 17:44:26 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	main(int ac, char **av)
 		{
 			if (parse_map(&map))
 				init_and_launch(&map);
+			else
+				return (free_map(&map), 1);
 		}
 	}
 	else

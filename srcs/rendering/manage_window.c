@@ -6,26 +6,11 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/16 18:23:03 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 17:38:52 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-// int	on_keypress(int keysym, t_data *data)
-// {
-// 	if (keysym == 65307)
-// 		mlx_loop_end(data->mlx_ptr);
-// 	// else if (keysym == KEY_W)
-//     //     player_move(keysym, data);
-//     // else if (keysym == KEY_A)
-//     //     player_move(keysym, data);
-//     // else if (keysym == KEY_S)
-//     //     player_move(keysym, data);
-//     // else if (keysym == KEY_D)
-//     //     player_move(keysym, data);
-// 	return (0);
-// }
 
 static void	*init_window(t_data *data)
 {

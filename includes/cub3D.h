@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/17 17:37:12 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 19:46:46 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,7 @@ typedef struct s_data
 
 //map_creation.c
 
-# define BAD_FILE_NAME "tia du caca dans le nom de la map, ca foit finir par .cub\n"
 # define BAD_OPENING "ca a chie dans la colle a l'ouverture du fichier le S\n"
-# define ERROR_WALL_TEXTURE_PATH "tia une couille dans le texture path des wall zebi\n"
-# define ERROR_VALUE_RGB "valeurs RGB OUT_OF_RANGE ou tia pas bien rempli les valeurs le S\n"
-//# define OUT_OF_RANGE(x) ((x) < 0 || (x) > 255)
-//# define IS_NUM_OR_SPACE(c) (((c) >= '0' && c <= '9') || (c) == ' ')
 
 int		check_and_open_map(char *file_name, t_map *map);
 
@@ -148,14 +143,15 @@ void	print_map(char **map);
 
 //map_creation_utils3.c
 
+int		ft_strlen_until_non_numeric(char *str, int i);
 int		out_of_range(int x);
+int		is_char_invalid(char c);
+int		is_position_player(char c);
+int		is_cell_suurrounded(char c);
 
 //parse_map.cs
 
 # define BAD_CHAR_MAP "tia un char qu'a rien a foutre dans la map zebi\n"
-# define IS_INVALID_CHAR(c) ((c) != '1' && (c) != '0' && (c) != 'N' && (c) != 'E' && (c) != 'S' && (c) != 'W' && (c) != ' ')
-# define IS_POSITION_PLAYER(c) ((c) == 'N' || (c) == 'S' || (c) == 'E' || (c) == 'W')
-# define IS_CELL_SUURROUNDED(c) ((c) == 'N' || (c) == 'S' || (c) == 'E' || (c) == 'W' || (c) == '0')
 # define WRONG_PLAYER_POS "tia un truc nique avec ta position du player zebi\n"
 # define MAP_IS_INVALID "elle est naze ta carte on dirait du gruyere zebi\n"
 
@@ -165,10 +161,6 @@ int		parse_map(t_map *map);
 
 //manage_window.c
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
 # define MLX_POINTER_FAIL "le pointeur mlx a chie zebi\n"
 
 void	manage_window(t_data *data);

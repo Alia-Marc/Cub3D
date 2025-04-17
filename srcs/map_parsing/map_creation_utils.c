@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2025/04/17 16:40:41 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 19:42:33 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,15 @@ int	check_struct_fill(t_map *map)
 {
 	if (!map->north_texture_path || !map->south_texture_path
 		|| !map->west_texture_path || !map->east_texture_path)
-		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), 0);
+		return (ft_fdprintf(2, "Error\ntia une couille")
+			, ft_fdprintf(2, " dans le texture path des wall zebi\n")
+			, free_map(map), 0);
 	if ((out_of_range(map->ceiling_red) || out_of_range(map->ceiling_green)
 			|| out_of_range(map->ceiling_blue) || out_of_range(map->floor_red)
 			|| out_of_range(map->floor_green) || out_of_range(map->floor_blue)))
-		return (ft_printf("Error\n"ERROR_VALUE_RGB), free_map(map), 0);
+		return (ft_fdprintf(2, "Error\nvaleurs RGB OUT_OF_RANGE ou")
+			, ft_fdprintf(2, " tia pas bien rempli les valeurs le S\n")
+			, free_map(map), 0);
 	return (1);
 }
 

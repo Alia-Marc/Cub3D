@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:04:01 by emilefourni       #+#    #+#             */
-/*   Updated: 2025/04/17 16:04:39 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 19:26:35 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	check_char_map(char **map, t_map *pos_player)
 		col = 0;
 		while (map[row][col])
 		{
-			if (IS_INVALID_CHAR(map[row][col]))
+			if (is_char_invalid(map[row][col]))
 				return (ft_printf("Error\n"BAD_CHAR_MAP), 0);
-			if (IS_POSITION_PLAYER(map[row][col]))
+			if (is_position_player(map[row][col]))
 			{
 				pos_player->start_x = row;
 				pos_player->start_y = col;
@@ -87,7 +87,7 @@ int	validate_map_interior(char **map, int rows)
 		while (map[row][col])
 		{
 			len_row = ft_strlen(map[row]);
-			if (IS_CELL_SUURROUNDED(map[row][col]))
+			if (is_cell_suurrounded(map[row][col]))
 			{
 				if (!is_surrounded_by_walls(map, row, col, rows))
 					return (0);
