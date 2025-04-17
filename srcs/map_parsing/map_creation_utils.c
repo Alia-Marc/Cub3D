@@ -6,23 +6,28 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2025/04/17 16:22:26 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 16:40:41 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
+int	skip_char_then_spaces(char *s, int *i)
+{
+	while (s[*i] != ' ')
+		(*i)++;
+	while (s[*i] == ' ')
+		(*i)++;
+	return (*i);
+}
+
 char	*path_texture_cpy(char *s, int i)
 {
 	char	*dup;
 	int		temp;
-	int		(len) = 0;
 
-	while (s[i] != ' ')
-		i++;
-	while (s[i] == ' ')
-		i++;
-	temp = i;
+	int (len) = 0;
+	temp = skip_char_then_spaces(s, &i);
 	while (s[i] && s[i] != '\n')
 	{
 		i++;
@@ -50,17 +55,17 @@ int	check_struct_fill(t_map *map)
 	if (!map->north_texture_path || !map->south_texture_path
 		|| !map->west_texture_path || !map->east_texture_path)
 		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), 0);
-	if ((OUT_OF_RANGE(map->ceiling_red) || OUT_OF_RANGE(map->ceiling_green) || OUT_OF_RANGE(map->ceiling_blue) ||
-		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue)))
+	if ((out_of_range(map->ceiling_red) || out_of_range(map->ceiling_green)
+			|| out_of_range(map->ceiling_blue) || out_of_range(map->floor_red)
+			|| out_of_range(map->floor_green) || out_of_range(map->floor_blue)))
 		return (ft_printf("Error\n"ERROR_VALUE_RGB), free_map(map), 0);
 	return (1);
 }
 
-char **free_line_map(char **map)
+char	**free_line_map(char **map)
 {
-	int	(free_line) = 0;
-	int	(shift_index) = 0;
-
+	int (free_line) = 0;
+	int (shift_index) = 0;
 	while (free_line < 6 && map[free_line])
 	{
 		free(map[free_line]);

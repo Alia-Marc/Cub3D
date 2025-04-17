@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/17 16:18:31 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 16:35:04 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ typedef struct s_data
 # define BAD_OPENING "ca a chie dans la colle a l'ouverture du fichier le S\n"
 # define ERROR_WALL_TEXTURE_PATH "tia une couille dans le texture path des wall zebi\n"
 # define ERROR_VALUE_RGB "valeurs RGB OUT_OF_RANGE ou tia pas bien rempli les valeurs le S\n"
-# define OUT_OF_RANGE(x) ((x) < 0 || (x) > 255)
+//# define OUT_OF_RANGE(x) ((x) < 0 || (x) > 255)
 //# define IS_NUM_OR_SPACE(c) (((c) >= '0' && c <= '9') || (c) == ' ')
 
 int		check_and_open_map(char *file_name, t_map *map);
@@ -145,6 +145,10 @@ int		check_struct_fill(t_map *map);
 void	init_map(t_map *map);
 void	free_map(t_map *map);
 void	print_map(char **map);
+
+//map_creation_utils3.c
+
+int	out_of_range(int x);
 
 //parse_map.cs
 
