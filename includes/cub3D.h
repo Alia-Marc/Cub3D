@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/17 16:35:04 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 17:37:12 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	print_map(char **map);
 
 //map_creation_utils3.c
 
-int	out_of_range(int x);
+int		out_of_range(int x);
 
 //parse_map.cs
 
@@ -215,6 +215,6 @@ int		exit_game(t_data *g);
 
 //player_events.c
 void	player_movement(t_data *g, double posx, double posy);
-void	player_rotation(t_data *g);
+void	player_rotation(t_data *g, t_player *p);
 
 #endif
