@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/17 19:46:46 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 19:49:27 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 # define MOV_SPEED 0.04
 # define ROT_SPEED 0.05
+# define X11_MAX_KEYS 65535
 
 typedef struct s_map
 {
@@ -116,7 +117,7 @@ typedef struct s_data
 	t_img		textures[4];
 	t_color		floor;
 	t_color		ceiling;
-	bool		keys[65535];
+	bool		keys[X11_MAX_KEYS];
 
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/17 17:38:52 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 19:49:57 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	init_keys(t_data *g)
 	int	i;
 
 	i = 0;
-	while (i < 65535)
+	while (i < X11_MAX_KEYS)
 	{
 		g->keys[i] = false;
 		i++;
