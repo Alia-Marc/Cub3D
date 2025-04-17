@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creation_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:40:20 by emilefourni       #+#    #+#             */
-/*   Updated: 2024/12/06 15:03:33 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:22:26 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ char	*path_texture_cpy(char *s, int i)
 
 int	check_struct_fill(t_map *map)
 {
-	if (!map->north_texture_path || !map->south_texture_path || !map->west_texture_path || !map->east_texture_path)
+	if (!map->north_texture_path || !map->south_texture_path
+		|| !map->west_texture_path || !map->east_texture_path)
 		return (ft_printf("Error\n"ERROR_WALL_TEXTURE_PATH), 0);
 	if ((OUT_OF_RANGE(map->ceiling_red) || OUT_OF_RANGE(map->ceiling_green) || OUT_OF_RANGE(map->ceiling_blue) ||
 		 OUT_OF_RANGE(map->floor_red) || OUT_OF_RANGE(map->floor_green) || OUT_OF_RANGE(map->floor_blue)))
-		return (ft_printf("Error\n"ERROR_VALUE_RGB), 0);
+		return (ft_printf("Error\n"ERROR_VALUE_RGB), free_map(map), 0);
 	return (1);
 }
 
@@ -60,7 +61,7 @@ char **free_line_map(char **map)
 	int	(free_line) = 0;
 	int	(shift_index) = 0;
 
-	while (free_line < 6 && map[free_line]) 
+	while (free_line < 6 && map[free_line])
 	{
 		free(map[free_line]);
 		free_line++;
@@ -85,7 +86,8 @@ int	check_rgb(char **rgb_values)
 		j = 0;
 		while (rgb_values[i][j])
 		{
-			if (!IS_NUM_OR_SPACE(rgb_values[i][j]))
+			if (!((rgb_values[i][j] >= '0' && rgb_values[i][j] <= '9')
+				|| rgb_values[i][j] == ' '))
 				return (0);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/16 18:35:52 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/17 16:18:31 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct s_rendering
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	
+
 }	t_rendering;
 
 typedef struct s_data
@@ -124,20 +124,20 @@ typedef struct s_data
 
 //map_creation.c
 
-#define BAD_FILE_NAME "tia du caca dans le nom de la map, ca foit finir par .cub\n"
-#define BAD_OPENING "ca a chie dans la colle a l'ouverture du fichier le S\n"
-#define ERROR_WALL_TEXTURE_PATH "tia une couille dans le texture path des wall zebi\n"
-#define ERROR_VALUE_RGB "valeurs RGB OUT_OF_RANGE ou tia pas bien rempli les valeurs le S\n"
-#define OUT_OF_RANGE(x) ((x) < 0 || (x) > 255)
-#define IS_NUM_OR_SPACE(c) (((c) >= '0' && c <= '9') || (c) == ' ')
+# define BAD_FILE_NAME "tia du caca dans le nom de la map, ca foit finir par .cub\n"
+# define BAD_OPENING "ca a chie dans la colle a l'ouverture du fichier le S\n"
+# define ERROR_WALL_TEXTURE_PATH "tia une couille dans le texture path des wall zebi\n"
+# define ERROR_VALUE_RGB "valeurs RGB OUT_OF_RANGE ou tia pas bien rempli les valeurs le S\n"
+# define OUT_OF_RANGE(x) ((x) < 0 || (x) > 255)
+//# define IS_NUM_OR_SPACE(c) (((c) >= '0' && c <= '9') || (c) == ' ')
 
-int check_and_open_map(char *file_name, t_map *map);
+int		check_and_open_map(char *file_name, t_map *map);
 
 //map_creation_utils.c
 
 char	*path_texture_cpy(char *s, int i);
 char	**free_line_map(char **map);
-int 	check_rgb(char **rgb_values);
+int		check_rgb(char **rgb_values);
 int		check_struct_fill(t_map *map);
 
 //map_creation_utils2.c
@@ -148,12 +148,12 @@ void	print_map(char **map);
 
 //parse_map.cs
 
-#define BAD_CHAR_MAP "tia un char qu'a rien a foutre dans la map zebi\n"
-#define IS_INVALID_CHAR(c) ((c) != '1' && (c) != '0' && (c) != 'N' && (c) != 'E' && (c) != 'S' && (c) != 'W' && (c) != ' ')
-#define IS_POSITION_PLAYER(c) ((c) == 'N' || (c) == 'S' || (c) == 'E' || (c) == 'W')
-#define IS_CELL_SUURROUNDED(c) ((c) == 'N' || (c) == 'S' || (c) == 'E' || (c) == 'W' || (c) == '0')
-#define WRONG_PLAYER_POS "tia un truc nique avec ta position du player zebi\n"
-#define MAP_IS_INVALID "elle est naze ta carte on dirait du gruyere zebi\n"
+# define BAD_CHAR_MAP "tia un char qu'a rien a foutre dans la map zebi\n"
+# define IS_INVALID_CHAR(c) ((c) != '1' && (c) != '0' && (c) != 'N' && (c) != 'E' && (c) != 'S' && (c) != 'W' && (c) != ' ')
+# define IS_POSITION_PLAYER(c) ((c) == 'N' || (c) == 'S' || (c) == 'E' || (c) == 'W')
+# define IS_CELL_SUURROUNDED(c) ((c) == 'N' || (c) == 'S' || (c) == 'E' || (c) == 'W' || (c) == '0')
+# define WRONG_PLAYER_POS "tia un truc nique avec ta position du player zebi\n"
+# define MAP_IS_INVALID "elle est naze ta carte on dirait du gruyere zebi\n"
 
 int		parse_map(t_map *map);
 
@@ -161,11 +161,11 @@ int		parse_map(t_map *map);
 
 //manage_window.c
 
-#define KEY_W 13
-#define KEY_A 0
-#define KEY_S 1
-#define KEY_D 2
-#define MLX_POINTER_FAIL "le pointeur mlx a chie zebi\n"
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define MLX_POINTER_FAIL "le pointeur mlx a chie zebi\n"
 
 void	manage_window(t_data *data);
 
@@ -198,7 +198,6 @@ void	exit_free_all(t_data *g, char *message, int exit_code);
 void	free_img(t_data *g, t_img *img);
 void	free_all(t_data *g);
 
-
 ///////////////////////////////////////EVENTS////////////////////////////////
 
 //hooks.c
@@ -213,7 +212,5 @@ int		exit_game(t_data *g);
 //player_events.c
 void	player_movement(t_data *g, double posx, double posy);
 void	player_rotation(t_data *g);
-
-
 
 #endif

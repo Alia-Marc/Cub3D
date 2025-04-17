@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creation_utils2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:44:20 by emfourni          #+#    #+#             */
-/*   Updated: 2024/12/06 15:01:56 by emfourni         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:07:53 by malia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ void	init_map(t_map *map)
 	map->west_texture_path = NULL;
 	map->east_texture_path = NULL;
 	map->map = NULL;
-	map->ceiling_red = map->ceiling_green = map->ceiling_blue = -1;
-	map->floor_red = map->floor_green = map->floor_blue = -1;
+	map->ceiling_red = -1;
+	map->ceiling_green = -1;
+	map->ceiling_blue = -1;
+	map->floor_red = -1;
+	map->floor_green = -1;
+	map->floor_blue = -1;
 }
 
 void	free_map(t_map *map)
 {
 	if (!map)
-		return;
+		return ;
 	if (map->north_texture_path)
 		free(map->north_texture_path);
 	if (map->south_texture_path)
@@ -38,5 +42,3 @@ void	free_map(t_map *map)
 	if (map->map)
 		ft_free_tab(map->map);
 }
-
-
