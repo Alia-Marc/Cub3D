@@ -6,7 +6,7 @@
 #    By: malia <malia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
-#    Updated: 2025/04/17 19:59:30 by malia            ###   ########.fr        #
+#    Updated: 2025/04/17 20:07:51 by malia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ RENDERING_BONUS = srcs/rendering/manage_window.c srcs/rendering/init.c srcs/rend
 PARSING_BONUS = srcs/map_parsing/map_creation.c srcs/map_parsing/map_creation_utils.c srcs/map_parsing/parse_map.c \
 			srcs/map_parsing/map_creation_utils2.c srcs/map_parsing/map_creation_utils3.c\
 
-EVENTS_BONUS = srcs/events/hooks.c srcs/events/events.c srcs/events/player_events.c \
+EVENTS_BONUS = srcs/events/hooks_bonus.c srcs/events/events.c srcs/events/player_events.c \
 
 SRCS_BONUS = $(RENDERING_BONUS) $(PARSING_BONUS) $(EVENTS_BONUS)
 
