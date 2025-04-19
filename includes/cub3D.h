@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/17 19:49:27 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/19 05:48:00 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,6 @@ typedef struct s_map
 
 }	t_map;
 
-// typedef union u_color	t_color;
-
-// union					u_color
-// {
-// 	__uint32_t			integer;
-// 	struct
-// 	{
-// 		__uint8_t		r;
-// 		__uint8_t		g;
-// 		__uint8_t		b;
-// 		__uint8_t		a;
-// 	};
-// };
-
 typedef struct s_img
 {
 	void	*img;
@@ -72,7 +58,6 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-	// t_color	*pixels;
 
 }	t_img;
 
@@ -119,11 +104,11 @@ typedef struct s_data
 	t_player	player;
 	t_rendering	dda;
 	t_img		textures[4];
-	// t_color		floor;
-	// t_color		ceiling;
 	int			floor;
 	int			ceiling;
 	bool		keys[X11_MAX_KEYS];
+	int			minimap_on;
+	t_img		minimap;
 
 }	t_data;
 
@@ -215,5 +200,10 @@ int		exit_game(t_data *g);
 //player_events.c
 void	player_movement(t_data *g, double posx, double posy);
 void	player_rotation(t_data *g, t_player *p);
+
+///////////////////////////////////////BONUS////////////////////////////////
+
+t_img	init_minimap(t_data *g);
+void	minimap(t_data *g, int pos_y, int pos_x);
 
 #endif

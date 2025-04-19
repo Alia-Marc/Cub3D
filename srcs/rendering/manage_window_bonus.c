@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_window.c                                    :+:      :+:    :+:   */
+/*   manage_window_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/19 03:00:36 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/19 05:51:50 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	manage_window(t_data *data)
 	data->textures[1] = init_img_to_square(data, data->map->south_texture_path);
 	data->textures[2] = init_img_to_square(data, data->map->west_texture_path);
 	data->textures[3] = init_img_to_square(data, data->map->east_texture_path);
+	data->minimap = init_minimap(data);
 	init_keys(data);
 	hooks(data);
 	mlx_loop(data->mlx_ptr);
