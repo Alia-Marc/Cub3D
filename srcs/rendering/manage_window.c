@@ -16,7 +16,7 @@ static void	*init_window(t_data *data)
 {
 	void	*win_ptr;
 
-	data->win_width = 1080;
+	data->win_width = 1920;
 	data->win_height = 1080;
 	win_ptr = mlx_new_window(data->mlx_ptr, data->win_width,
 			data->win_height, "TON CUB EN 3D");

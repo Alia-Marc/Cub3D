@@ -65,11 +65,11 @@ t_img	init_screen(t_data *g)
 	t_img	screen;
 	//int		t[2];
 
-	screen.img = mlx_new_image(g->mlx_ptr, g->win_height, g->win_width);
+	screen.img = mlx_new_image(g->mlx_ptr, g->win_width, g->win_height);
 	if (!screen.img)
 		exit_free_all(g, "Failed to init screen image\n", 1);
-	screen.height = g->win_height;
 	screen.width = g->win_width;
+	screen.height = g->win_height;
 	screen.address = mlx_get_data_addr(screen.img, &screen.bits_per_pixel, &screen.size_line, &screen.endian);
 	screen.pixels = (int *)screen.address;
 	//screen.pixels = (t_color *)screen.address;
