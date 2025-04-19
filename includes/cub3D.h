@@ -48,27 +48,31 @@ typedef struct s_map
 
 }	t_map;
 
-typedef union u_color	t_color;
+// typedef union u_color	t_color;
 
-union					u_color
-{
-	__uint32_t			integer;
-	struct
-	{
-		__uint8_t		r;
-		__uint8_t		g;
-		__uint8_t		b;
-		__uint8_t		a;
-	};
-};
+// union					u_color
+// {
+// 	__uint32_t			integer;
+// 	struct
+// 	{
+// 		__uint8_t		r;
+// 		__uint8_t		g;
+// 		__uint8_t		b;
+// 		__uint8_t		a;
+// 	};
+// };
 
 typedef struct s_img
 {
 	void	*img;
 	void	*address;
+	int		*pixels;
 	int		height;
 	int		width;
-	t_color	*pixels;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	// t_color	*pixels;
 
 }	t_img;
 
@@ -115,8 +119,10 @@ typedef struct s_data
 	t_player	player;
 	t_rendering	dda;
 	t_img		textures[4];
-	t_color		floor;
-	t_color		ceiling;
+	// t_color		floor;
+	// t_color		ceiling;
+	int			floor;
+	int			ceiling;
 	bool		keys[X11_MAX_KEYS];
 
 }	t_data;
@@ -170,7 +176,7 @@ void	manage_window(t_data *data);
 void	init_and_launch(t_map *map);
 t_img	init_img_to_square(t_data *g, char *path);
 t_img	init_screen(t_data *g);
-t_color	init_color(int red, int green, int blue);
+// t_color	init_color(int red, int green, int blue);
 void	init_player(t_data *g);
 
 //init_utils.c
