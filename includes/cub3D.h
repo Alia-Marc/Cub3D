@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/19 05:48:00 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/19 22:24:26 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,13 @@ typedef struct s_rendering
 
 }	t_rendering;
 
+typedef struct s_sprite
+{
+	t_img	campfire[4];
+	//double	*ZBuffer;
+	
+}	t_sprite;
+
 typedef struct s_data
 {
 	t_img		window;
@@ -109,6 +116,7 @@ typedef struct s_data
 	bool		keys[X11_MAX_KEYS];
 	int			minimap_on;
 	t_img		minimap;
+	t_sprite	sprites;
 
 }	t_data;
 
@@ -205,5 +213,8 @@ void	player_rotation(t_data *g, t_player *p);
 
 t_img	init_minimap(t_data *g);
 void	minimap(t_data *g, int pos_y, int pos_x);
+
+t_img	init_sprite_img(t_data *g, char *path);
+//t_sprite	init_sprite(t_data *g);
 
 #endif

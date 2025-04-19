@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/19 05:51:50 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/19 21:24:17 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ static void	init_keys(t_data *g)
 	}
 }
 
+void	init_imgs(t_data *g)
+{
+	g->window = init_screen(g);
+	g->textures[0] = init_img_to_square(g, g->map->north_texture_path);
+	g->textures[1] = init_img_to_square(g, g->map->south_texture_path);
+	g->textures[2] = init_img_to_square(g, g->map->west_texture_path);
+	g->textures[3] = init_img_to_square(g, g->map->east_texture_path);
+	g->minimap = init_minimap(g);
+	g->sprites.campfire[0] = init_sprite_img(g,"./textures/campfire/campfire0_filled.xpm");
+	g->sprites.campfire[1] = init_sprite_img(g,"./textures/campfire/campfire1_filled.xpm");
+	g->sprites.campfire[2] = init_sprite_img(g,"./textures/campfire/campfire2_filled.xpm");
+	g->sprites.campfire[3] = init_sprite_img(g,"./textures/campfire/campfire3_filled.xpm");
+}
+
 void	manage_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
@@ -48,12 +62,7 @@ void	manage_window(t_data *data)
 	data->win_ptr = init_window(data);
 	if (!data->win_ptr)
 		exit_free_all(data, MLX_POINTER_FAIL, 1);
-	data->window = init_screen(data);
-	data->textures[0] = init_img_to_square(data, data->map->north_texture_path);
-	data->textures[1] = init_img_to_square(data, data->map->south_texture_path);
-	data->textures[2] = init_img_to_square(data, data->map->west_texture_path);
-	data->textures[3] = init_img_to_square(data, data->map->east_texture_path);
-	data->minimap = init_minimap(data);
+	init_imgs(data);
 	init_keys(data);
 	hooks(data);
 	mlx_loop(data->mlx_ptr);
