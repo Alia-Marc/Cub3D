@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/20 03:12:11 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 21:06:50 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,9 +217,11 @@ void	minimap(t_data *g, int pos_y, int pos_x);
 
 t_img	init_sprite_img(t_data *g, char *path);
 //t_sprite	init_sprite(t_data *g);
-void	hit_wall_or_door(t_data *g, int *hit);
+void	hit_wall_or_door(t_data *g, int *hit, bool *opened_door);
 void	perform_opened_door_dda(t_data *g);
 void	draw_door_vertical_line(t_data *g, t_img texture, int x);
 void	player_door_interaction(t_data *g, int keycode);
+void	perform_dda_bonus(t_data *g, bool *opened_door);
+void	draw_opened_door(t_data *g, int x, bool *opened_door, t_img texture);
 
 #endif

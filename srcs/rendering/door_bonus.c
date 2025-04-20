@@ -6,19 +6,24 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 23:51:48 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/20 03:02:21 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 20:53:10 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	hit_wall_or_door(t_data *g, int *hit)
+void	hit_wall_or_door(t_data *g, int *hit, bool *opened_door)
 {
-	if (ft_check_charset("1D", g->map->map[g->dda.map_x][g->dda.map_y]))
+	if (ft_check_charset("1DO", g->map->map[g->dda.map_x][g->dda.map_y]))
 	{
 		*hit = 1;
 		if (g->map->map[g->dda.map_x][g->dda.map_y] == 'D')
 			g->dda.door[0] = true;
+		else if (g->map->map[g->dda.map_x][g->dda.map_y] == 'O')
+		{
+			*opened_door = true;
+			*hit = 0;
+		}
 	}
 }
 

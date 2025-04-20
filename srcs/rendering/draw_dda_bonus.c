@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 19:18:30 by malia             #+#    #+#             */
-/*   Updated: 2025/04/20 03:03:56 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 21:06:41 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,20 @@ void	dda(t_data *g)
 {
 	int		x;
 	t_img	texture;
+	bool	opened_door;
 	// double	Z_Buffer[g->win_width];
 
 	x = 0;
 	while (x < g->win_width)
 	{
+		opened_door = false;
 		calculate_ray_dir(g, x);
 		init_dda(g);
-		perform_dda(g);
+		perform_dda_bonus(g, &opened_door);
 		calculate_draw_limits(g);
 		texture = choose_wall_texture(g);
 		draw_vertical_line(g, texture, x);
-		calculate_ray_dir(g, x);
-		init_dda(g);
-		perform_opened_door_dda(g);
-		calculate_draw_limits(g);
-		texture = choose_wall_texture(g);
-		draw_door_vertical_line(g, texture, x);
+		draw_opened_door(g, x, &opened_door, texture);
 		// Z_Buffer[x] = g->dda.perp_wall_dist;
 		x++;
 	}

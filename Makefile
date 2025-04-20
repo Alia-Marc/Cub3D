@@ -6,7 +6,7 @@
 #    By: aliam <aliam@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 18:11:24 by emilefourni       #+#    #+#              #
-#    Updated: 2025/04/20 02:33:03 by aliam            ###   ########.fr        #
+#    Updated: 2025/04/20 21:07:11 by aliam            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = $(RENDERING) $(PARSING) $(EVENTS)
 RENDERING_BONUS = srcs/rendering/manage_window_bonus.c srcs/rendering/init_bonus.c srcs/rendering/dda_bonus.c \
 			srcs/rendering/draw_dda_bonus.c srcs/rendering/exit_bonus.c srcs/rendering/init_utils.c \
 			srcs/rendering/minimap_bonus.c srcs/rendering/sprite_bonus.c srcs/rendering/door_bonus.c \
+			srcs/rendering/door_utils_bonus.c \
 
 PARSING_BONUS = srcs/map_parsing/map_creation.c srcs/map_parsing/map_creation_utils.c srcs/map_parsing/parse_map.c \
 			srcs/map_parsing/map_creation_utils2.c srcs/map_parsing/map_creation_utils3_bonus.c \

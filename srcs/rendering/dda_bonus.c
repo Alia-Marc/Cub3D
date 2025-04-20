@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:01:18 by malia             #+#    #+#             */
-/*   Updated: 2025/04/20 00:14:43 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 20:51:12 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	init_dda(t_data *g)
 	calculate_side_dist(g);
 }
 
-void	perform_dda(t_data *g)
+void	perform_dda_bonus(t_data *g, bool *opened_door)
 {
 	int	hit;
 
@@ -85,7 +85,7 @@ void	perform_dda(t_data *g)
 			g->dda.map_y += g->dda.step_y;
 			g->dda.side = 1;
 		}
-		hit_wall_or_door(g, &hit);
+		hit_wall_or_door(g, &hit, opened_door);
 	}
 	if (!g->dda.side)
 		g->dda.perp_wall_dist = (g->dda.side_dist_x - g->dda.delta_dist_x);
