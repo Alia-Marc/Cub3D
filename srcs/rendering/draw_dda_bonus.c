@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 19:18:30 by malia             #+#    #+#             */
-/*   Updated: 2025/04/20 21:06:41 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 01:07:35 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	dda(t_data *g)
 	int		x;
 	t_img	texture;
 	bool	opened_door;
-	// double	Z_Buffer[g->win_width];
+	double	*Z_Buffer;
 
 	x = 0;
+	Z_Buffer = (double *)ft_calloc(g->win_width, sizeof(double));
+	if (!Z_Buffer)
+		exit_free_all(g, "Malloc error\n", 1);
 	while (x < g->win_width)
 	{
 		opened_door = false;
@@ -29,11 +32,12 @@ void	dda(t_data *g)
 		calculate_draw_limits(g);
 		texture = choose_wall_texture(g);
 		draw_vertical_line(g, texture, x);
+		Z_Buffer[x] = g->dda.perp_wall_dist;
 		draw_opened_door(g, x, &opened_door, texture);
-		// Z_Buffer[x] = g->dda.perp_wall_dist;
 		x++;
 	}
 	//draw_sprites(g, Z_Buffer);
+	free(Z_Buffer);
 }
 
 t_img	choose_wall_texture(t_data *g)

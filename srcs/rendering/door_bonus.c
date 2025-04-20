@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 23:51:48 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/20 20:53:10 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 23:51:07 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	hit_wall_or_opened_door(t_data *g, int *hit)
 		*hit = 1;
 		if (g->map->map[g->dda.map_x][g->dda.map_y] == 'O')
 			g->dda.door[1] = true;
-		else if (g->map->map[g->dda.map_x][g->dda.map_y] == 'D')
-			g->dda.door[0] = true;
+		// else if (g->map->map[g->dda.map_x][g->dda.map_y] == 'D')
+		// 	g->dda.door[0] = true;
 	}
 }
 

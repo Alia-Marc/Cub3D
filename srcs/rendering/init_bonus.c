@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:42:03 by alia              #+#    #+#             */
-/*   Updated: 2025/04/20 01:52:12 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 01:03:21 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,16 @@ void	init_and_launch(t_map *map)
 	g.textures[2].img = NULL;
 	g.textures[3].img = NULL;
 	g.minimap.img = NULL;
-	g.sprites.campfire[0].img = NULL;
-	g.sprites.campfire[1].img = NULL;
-	g.sprites.campfire[2].img = NULL;
-	g.sprites.campfire[3].img = NULL;
+	g.campfire[0].img = NULL;
+	g.campfire[1].img = NULL;
+	g.campfire[2].img = NULL;
+	g.campfire[3].img = NULL;
 	g.minimap_on = -1;
 	g.door[0].img = NULL;
 	g.door[1].img = NULL;
+	g.sprites = NULL;
+	g.num_sprites = 0;
+	g.framecount = 0;
 	init_player(&g);
 	init_colors(&g);
 	manage_window(&g);

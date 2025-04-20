@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:06:21 by malia             #+#    #+#             */
-/*   Updated: 2025/04/20 01:54:39 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 00:48:07 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ void	free_img(t_data *g, t_img *img)
 	}
 }
 
+void	free_sprites(t_data *g, t_sprite **sprites)
+{
+	t_sprite	*tmp;
+
+	if (!sprites)
+		return ;
+	while (*sprites)
+	{
+		tmp = (*sprites)->next;
+		free(*sprites);
+		*sprites = tmp;
+	}
+	g->sprites = NULL;
+}
+
 void	free_all(t_data *g)
 {
 	free_map(g->map);
@@ -41,12 +56,13 @@ void	free_all(t_data *g)
 	free_img(g, &g->window);
 	if (g->minimap_on != 0)
 		free_img(g, &g->minimap);
-	free_img(g, &g->sprites.campfire[0]);
-	free_img(g, &g->sprites.campfire[1]);
-	free_img(g, &g->sprites.campfire[2]);
-	free_img(g, &g->sprites.campfire[3]);
+	free_img(g, &g->campfire[0]);
+	free_img(g, &g->campfire[1]);
+	free_img(g, &g->campfire[2]);
+	free_img(g, &g->campfire[3]);
 	free_img(g, &g->door[0]);
 	free_img(g, &g->door[1]);
+	free_sprites(g, &g->sprites);
 	if (g->mlx_ptr && g->win_ptr)
 		mlx_destroy_window(g->mlx_ptr, g->win_ptr);
 	if (g->mlx_ptr)
