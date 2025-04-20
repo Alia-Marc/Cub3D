@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:42:36 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/19 23:26:48 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 03:00:50 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_img	init_sprite_img(t_data *g, char *path)
 	if (!spr.img)
 		exit_free_all(g, "Failed to init sprite image\n", 1);
 	spr.address = mlx_get_data_addr(spr.img, &spr.bits_per_pixel,
-		&spr.size_line, &spr.endian);
+			&spr.size_line, &spr.endian);
 	spr.pixels = (int *)spr.address;
 	return (spr);
 }

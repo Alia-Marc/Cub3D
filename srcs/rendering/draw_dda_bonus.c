@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 19:18:30 by malia             #+#    #+#             */
-/*   Updated: 2025/04/19 23:29:42 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 03:03:56 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	dda(t_data *g)
 {
 	int		x;
 	t_img	texture;
-	double	ZBuffer[g->win_width];
+	// double	Z_Buffer[g->win_width];
 
 	x = 0;
 	while (x < g->win_width)
@@ -27,17 +27,27 @@ void	dda(t_data *g)
 		calculate_draw_limits(g);
 		texture = choose_wall_texture(g);
 		draw_vertical_line(g, texture, x);
-		ZBuffer[x] = g->dda.perp_wall_dist;
+		calculate_ray_dir(g, x);
+		init_dda(g);
+		perform_opened_door_dda(g);
+		calculate_draw_limits(g);
+		texture = choose_wall_texture(g);
+		draw_door_vertical_line(g, texture, x);
+		// Z_Buffer[x] = g->dda.perp_wall_dist;
 		x++;
 	}
-	//draw_sprites(g, ZBuffer);
+	//draw_sprites(g, Z_Buffer);
 }
 
 t_img	choose_wall_texture(t_data *g)
 {
 	t_img	texture;
 
-	if (!g->dda.side && g->dda.ray_dir_x >= 0)
+	if (g->dda.door[0])
+		texture = g->door[0];
+	else if (g->dda.door[1])
+		texture = g->door[1];
+	else if (!g->dda.side && g->dda.ray_dir_x >= 0)
 		texture = g->textures[0];
 	else if (!g->dda.side && g->dda.ray_dir_x < 0)
 		texture = g->textures[1];

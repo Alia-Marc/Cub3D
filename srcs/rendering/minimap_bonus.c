@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 02:28:36 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/19 05:51:02 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 02:59:53 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_img	init_minimap(t_data *g)
 	t_img	minimap;
 	int		size;
 
-	g->minimap_on = -1;
 	if (g->win_width < 300 || g->win_height < 300)
 	{
 		g->minimap_on = 0;
@@ -73,34 +72,37 @@ void	print_player_pos(t_data *g)
 	}
 }
 
-int	is_wall_or_space(char c)
+void	choose_color_and_draw(double *map, int pos_y, int pos_x, t_data *g)
 {
-	return (c == '1' || c == ' ');
+	if ((map[0] < 0 || map[1] < 0 || map[0] > g->map->nb_rows
+			|| map[1] > ft_strlen(g->map->map[(int)map[0]]))
+		|| ft_check_charset("1 ", g->map->map[(int)map[0]][(int)map[1]]))
+		g->minimap.pixels[pos_y * g->minimap.width + pos_x] = 0x000000;
+	else if ((g->map->map[(int)map[0]][(int)map[1]]) == 'D')
+		g->minimap.pixels[pos_y * g->minimap.width + pos_x] = 0x808080;
+	else if ((g->map->map[(int)map[0]][(int)map[1]]) == 'O')
+		g->minimap.pixels[pos_y * g->minimap.width + pos_x] = 0x0080FF;
+	else
+		g->minimap.pixels[pos_y * g->minimap.width + pos_x] = 0xFFFFFF;
 }
 
 void	minimap(t_data *g, int pos_y, int pos_x)
 {
-	double	mapx;
-	double	mapy;
+	double	map[2];
 
-	mapx = g->player.pos_x - 5;
+	map[0] = g->player.pos_x - 5;
 	while (pos_y < g->minimap.height)
 	{
 		pos_x = 2;
-		mapy = g->player.pos_y - 5 + pos_y / 204;
+		map[1] = g->player.pos_y - 5 + pos_y / 204;
 		while (pos_x < g->minimap.width)
 		{
-			if ((mapx < 0 || mapy < 0 || mapx > g->map->nb_rows
-					|| mapy > ft_strlen(g->map->map[(int)mapx]))
-				|| is_wall_or_space(g->map->map[(int)mapx][(int)mapy]))
-				g->minimap.pixels[pos_y * g->minimap.width + pos_x] = 0x000000;
-			else
-				g->minimap.pixels[pos_y * g->minimap.width + pos_x] = 0xFFFFFF;
+			choose_color_and_draw(map, pos_y, pos_x, g);
 			pos_x++;
-			mapy += 0.05;
+			map[1] += 0.05;
 		}
 		pos_y++;
-		mapx += 0.05;
+		map[0] += 0.05;
 	}
 	print_player_pos(g);
 	print_outer_layer(g);

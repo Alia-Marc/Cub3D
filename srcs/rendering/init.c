@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:42:03 by alia              #+#    #+#             */
-/*   Updated: 2025/04/19 05:47:04 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 01:39:12 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ t_img	init_img_to_square(t_data *g, char *path)
 	else
 		width = height;
 	if (height > 1000)
+	{
+		mlx_destroy_image(g->mlx_ptr, texture.img);
 		exit_free_all(g, "Image too big\n", 1);
+	}
 	texture.height = height;
 	texture.width = width;
 	texture.address = mlx_get_data_addr(texture.img, &texture.bits_per_pixel,

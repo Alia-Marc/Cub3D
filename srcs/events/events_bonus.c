@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:30:34 by alia              #+#    #+#             */
-/*   Updated: 2025/04/19 05:15:09 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/20 02:52:20 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	handle_keyrelease(int keycode, t_data *g)
 {
 	if (keycode == XK_Tab)
 		g->minimap_on = -g->minimap_on;
+	player_door_interaction(g, keycode);
 	g->keys[keycode] = false;
 	return (0);
 }
