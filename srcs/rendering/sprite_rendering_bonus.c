@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 01:49:03 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/21 05:47:55 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 05:52:09 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ void	calculate_sprite_position(t_data *g, t_sprite **sprites, int i)
 			* g->rendspr.sprite_x + g->player.plane_x * g->rendspr.sprite_y);
 	g->rendspr.sprite_screen_x = (int)((g->win_width / 2)
 			* (1 + g->rendspr.transform_x / g->rendspr.transform_y));
-	g->rendspr.v_move_screen = (int)(VMove / g->rendspr.transform_y);
+	g->rendspr.v_move_screen = (int)(VMOVE / g->rendspr.transform_y);
 }
 
 void	calculate_sprite_size(t_data *g)
 {
 	g->rendspr.sprite_height = abs((int)(g->win_height
-				/ (g->rendspr.transform_y))) / VDiv;
+				/ (g->rendspr.transform_y))) / VDIV;
 	g->rendspr.draw_start_y = -g->rendspr.sprite_height / 2
 		+ g->win_height / 2 + g->rendspr.v_move_screen;
 	if (g->rendspr.draw_start_y < 0)
@@ -103,7 +103,7 @@ void	calculate_sprite_size(t_data *g)
 	if (g->rendspr.draw_end_y >= g->win_height)
 		g->rendspr.draw_end_y = g->win_height - 1;
 	g->rendspr.sprite_width = abs((int)(g->win_height
-				/ (g->rendspr.transform_y))) / UDiv;
+				/ (g->rendspr.transform_y))) / UDIV;
 	g->rendspr.draw_start_x = -g->rendspr.sprite_width
 		/ 2 + g->rendspr.sprite_screen_x;
 	if (g->rendspr.draw_start_x < 0)

@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/21 05:46:22 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 05:53:04 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_sprite
 
 }	t_sprite;
 
-typedef	struct s_rendspr
+typedef struct s_rendspr
 {
 	int		*sprite_order;
 	double	*sprite_distance;
@@ -155,28 +155,28 @@ typedef struct s_data
 
 # define BAD_OPENING "ca a chie dans la colle a l'ouverture du fichier le S\n"
 
-int		check_and_open_map(char *file_name, t_map *map);
+int			check_and_open_map(char *file_name, t_map *map);
 
 //map_creation_utils.c
 
-char	*path_texture_cpy(char *s, int i);
-char	**free_line_map(char **map);
-int		check_rgb(char **rgb_values);
-int		check_struct_fill(t_map *map);
+char		*path_texture_cpy(char *s, int i);
+char		**free_line_map(char **map);
+int			check_rgb(char **rgb_values);
+int			check_struct_fill(t_map *map);
 
 //map_creation_utils2.c
 
-void	init_map(t_map *map);
-void	free_map(t_map *map);
-void	print_map(char **map);
+void		init_map(t_map *map);
+void		free_map(t_map *map);
+void		print_map(char **map);
 
 //map_creation_utils3.c
 
-int		ft_strlen_until_non_numeric(char *str, int i);
-int		out_of_range(int x);
-int		is_char_invalid(char c);
-int		is_position_player(char c);
-int		is_cell_suurrounded(char c);
+int			ft_strlen_until_non_numeric(char *str, int i);
+int			out_of_range(int x);
+int			is_char_invalid(char c);
+int			is_position_player(char c);
+int			is_cell_suurrounded(char c);
 
 //parse_map.cs
 
@@ -184,7 +184,7 @@ int		is_cell_suurrounded(char c);
 # define WRONG_PLAYER_POS "tia un truc nique avec ta position du player zebi\n"
 # define MAP_IS_INVALID "elle est naze ta carte on dirait du gruyere zebi\n"
 
-int		parse_map(t_map *map);
+int			parse_map(t_map *map);
 
 ///////////////////////////////////////RENDERING////////////////////////////////
 
@@ -192,65 +192,66 @@ int		parse_map(t_map *map);
 
 # define MLX_POINTER_FAIL "le pointeur mlx a chie zebi\n"
 
-void	manage_window(t_data *data);
+void		manage_window(t_data *data);
 
 //init.c
-void	init_and_launch(t_map *map);
-t_img	init_img_to_square(t_data *g, char *path);
-t_img	init_screen(t_data *g);
+void		init_and_launch(t_map *map);
+t_img		init_img_to_square(t_data *g, char *path);
+t_img		init_screen(t_data *g);
 // t_color	init_color(int red, int green, int blue);
-void	init_player(t_data *g);
+void		init_player(t_data *g);
 
 //init_utils.c
-void	assign_player_we_values(t_data *g, double plane_x, double dir_y);
+void		assign_player_we_values(t_data *g, double plane_x, double dir_y);
 
 //dda.c
 
-void	calculate_ray_dir(t_data *g, int x);
-void	init_dda(t_data *g);
-void	perform_dda(t_data *g);
-void	calculate_draw_limits(t_data *g);
+void		calculate_ray_dir(t_data *g, int x);
+void		init_dda(t_data *g);
+void		perform_dda(t_data *g);
+void		calculate_draw_limits(t_data *g);
 
 //draw_dda.c
 
-void	dda(t_data *g);
-void	draw_vertical_line(t_data *g, t_img texture, int x);
-t_img	choose_wall_texture(t_data *g);
-void	draw_floor_and_ceiling(t_data *g);
+void		dda(t_data *g);
+void		draw_vertical_line(t_data *g, t_img texture, int x);
+t_img		choose_wall_texture(t_data *g);
+void		draw_floor_and_ceiling(t_data *g);
 
 //exit.c
-void	exit_free_all(t_data *g, char *message, int exit_code);
-void	free_img(t_data *g, t_img *img);
-void	free_all(t_data *g);
+void		exit_free_all(t_data *g, char *message, int exit_code);
+void		free_img(t_data *g, t_img *img);
+void		free_all(t_data *g);
 
 ///////////////////////////////////////EVENTS////////////////////////////////
 
 //hooks.c
-void	hooks(t_data *g);
+void		hooks(t_data *g);
 
 //events.c
-int		update(t_data *g);
-int		handle_keypress(int keycode, t_data *g);
-int		handle_keyrelease(int keycode, t_data *g);
-int		exit_game(t_data *g);
+int			update(t_data *g);
+int			handle_keypress(int keycode, t_data *g);
+int			handle_keyrelease(int keycode, t_data *g);
+int			exit_game(t_data *g);
 
 //player_events.c
-void	player_movement(t_data *g, double posx, double posy);
-void	player_rotation(t_data *g, t_player *p);
+void		player_movement(t_data *g, double posx, double posy);
+void		player_rotation(t_data *g, t_player *p);
 
 ///////////////////////////////////////BONUS////////////////////////////////
 
 //Minimap
-t_img	init_minimap(t_data *g);
-void	minimap(t_data *g, int pos_y, int pos_x);
+t_img		init_minimap(t_data *g);
+void		minimap(t_data *g, int pos_y, int pos_x);
 
 //Doors
-void	hit_wall_or_door(t_data *g, int *hit, bool *opened_door);
-void	perform_opened_door_dda(t_data *g);
-void	draw_door_vertical_line(t_data *g, t_img texture, int x);
-void	player_door_interaction(t_data *g, int keycode);
-void	perform_dda_bonus(t_data *g, bool *opened_door);
-void	draw_opened_door(t_data *g, int x, bool *opened_door, t_img texture);
+void		hit_wall_or_door(t_data *g, int *hit, bool *opened_door);
+void		perform_opened_door_dda(t_data *g);
+void		draw_door_vertical_line(t_data *g, t_img texture, int x);
+void		player_door_interaction(t_data *g, int keycode);
+void		perform_dda_bonus(t_data *g, bool *opened_door);
+void		draw_opened_door(t_data *g, int x, bool *opened_door,
+				t_img texture);
 
 //Sprites
 t_img		init_sprite_img(t_data *g, char *path);
@@ -259,9 +260,9 @@ void		sprite_add_back(t_sprite **sprites, t_sprite *new);
 t_sprite	*create_new_sprite(t_data *g, double pos_x, double pos_y);
 void		add_new_sprite_location(t_data *g, int keycode);
 
-# define UDiv 2
-# define VDiv 2
-# define VMove 300
+# define UDIV 2
+# define VDIV 2
+# define VMOVE 300
 
 //Render Sprites
 void		draw_sprites(t_data *g, double *Z_Buffer);
