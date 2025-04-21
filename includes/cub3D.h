@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/21 01:03:03 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 05:46:22 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,27 @@ typedef struct s_sprite
 
 }	t_sprite;
 
+typedef	struct s_rendspr
+{
+	int		*sprite_order;
+	double	*sprite_distance;
+	double	sprite_x;
+	double	sprite_y;
+	double	inv_det;
+	double	transform_x;
+	double	transform_y;
+	int		sprite_screen_x;
+	int		sprite_height;
+	int		draw_start_y;
+	int		draw_end_y;
+	int		sprite_width;
+	int		draw_start_x;
+	int		draw_end_x;
+	int		v_move_screen;
+	int		stripe;
+
+}	t_rendspr;
+
 typedef struct s_data
 {
 	t_img		window;
@@ -122,6 +143,7 @@ typedef struct s_data
 	t_img		door[2];
 	t_img		campfire[4];
 	t_sprite	*sprites;
+	t_rendspr	rendspr;
 	int			num_sprites;
 	int			framecount;
 
@@ -236,5 +258,16 @@ t_sprite	*sprites_last(t_sprite *sprites);
 void		sprite_add_back(t_sprite **sprites, t_sprite *new);
 t_sprite	*create_new_sprite(t_data *g, double pos_x, double pos_y);
 void		add_new_sprite_location(t_data *g, int keycode);
+
+# define UDiv 2
+# define VDiv 2
+# define VMove 300
+
+//Render Sprites
+void		draw_sprites(t_data *g, double *Z_Buffer);
+void		sort_sprites_distance(t_data *g, int i, int j);
+void		calculate_sprite_position(t_data *g, t_sprite **sprites, int i);
+void		calculate_sprite_size(t_data *g);
+void		draw_sprite_all_lines(t_data *g, double *Z_Buffer, t_img texture);
 
 #endif

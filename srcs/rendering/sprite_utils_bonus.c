@@ -6,11 +6,24 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 00:25:06 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/21 01:04:08 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 01:18:41 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+t_img	init_sprite_img(t_data *g, char *path)
+{
+	t_img	spr;
+
+	spr.img = mlx_xpm_file_to_image(g->mlx_ptr, path, &spr.width, &spr.height);
+	if (!spr.img)
+		exit_free_all(g, "Failed to init sprite image\n", 1);
+	spr.address = mlx_get_data_addr(spr.img, &spr.bits_per_pixel,
+			&spr.size_line, &spr.endian);
+	spr.pixels = (int *)spr.address;
+	return (spr);
+}
 
 t_sprite	*create_new_sprite(t_data *g, double pos_x, double pos_y)
 {

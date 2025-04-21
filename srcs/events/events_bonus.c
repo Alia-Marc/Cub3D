@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:30:34 by alia              #+#    #+#             */
-/*   Updated: 2025/04/21 00:46:06 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 04:25:48 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int	update(t_data *g)
 	mlx_put_image_to_window(g->mlx_ptr, g->win_ptr, g->window.img, 0, 0);
 	if (g->minimap_on == 1)
 		minimap(g, 2, 2);
+	if (g->framecount == 40)
+		g->framecount = -1;
+	g->framecount += 1;
 	return (0);
 }
 
