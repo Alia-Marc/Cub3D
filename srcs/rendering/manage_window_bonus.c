@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/21 04:47:55 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/21 18:57:27 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	init_imgs(t_data *g)
 	g->textures[2] = init_img_to_square(g, g->map->west_texture_path);
 	g->textures[3] = init_img_to_square(g, g->map->east_texture_path);
 	g->minimap = init_minimap(g);
-	g->campfire[0] = init_sprite_img(g, "./textures/campfire/campfire0_filled.xpm");
-	g->campfire[1] = init_sprite_img(g, "./textures/campfire/campfire1_filled.xpm");
-	g->campfire[2] = init_sprite_img(g, "./textures/campfire/campfire2_filled.xpm");
-	g->campfire[3] = init_sprite_img(g, "./textures/campfire/campfire3_filled.xpm");
+	g->campfire[0] = init_sprite_img(g, "./textures/campfire/campfire0_filled_2626.xpm");
+	g->campfire[1] = init_sprite_img(g, "./textures/campfire/campfire1_filled_2626.xpm");
+	g->campfire[2] = init_sprite_img(g, "./textures/campfire/campfire2_filled_2626.xpm");
+	g->campfire[3] = init_sprite_img(g, "./textures/campfire/campfire3_filled_2626.xpm");
 	g->door[0] = init_img_to_square(g, "./textures/door/space_door_400_shrinked.xpm");
 	g->door[1] = init_img_to_square(g, "./textures/door/space_door_opened_filled_400_2_shrinked.xpm");
 }
