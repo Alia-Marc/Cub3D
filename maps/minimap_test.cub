@@ -1,0 +1,18 @@
+NO ./textures/bricks0.xpm
+SO ./textures/bricks0.xpm
+WE ./textures/bricks0.xpm
+EA ./textures/bricks0.xpm
+
+F 27, 36, 24
+C  27, 0, 24
+
+111111111
+100000001
+111100001
+100000001
+1000N0001
+100000001
+101000001
+101001101
+101000001
+111111111

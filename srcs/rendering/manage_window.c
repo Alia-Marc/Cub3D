@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:43:07 by emfourni          #+#    #+#             */
-/*   Updated: 2025/04/17 19:49:57 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/19 03:00:36 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	*init_window(t_data *data)
 {
 	void	*win_ptr;
 
-	data->win_width = 1080;
+	data->win_width = 1920;
 	data->win_height = 1080;
 	win_ptr = mlx_new_window(data->mlx_ptr, data->win_width,
 			data->win_height, "TON CUB EN 3D");
