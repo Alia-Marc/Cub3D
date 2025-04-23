@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_rendering_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 01:49:03 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/21 05:52:09 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/23 18:00:20 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	calculate_sprite_position(t_data *g, t_sprite **sprites, int i)
 	tmp = (*sprites);
 	while (tmp && tmp->indice != i)
 		tmp = tmp->next;
-	// printf("        (%d)<%d> (%f;%f)", i, tmp->indice, tmp->pos_x, tmp->pos_y);
 	g->rendspr.sprite_x = tmp->pos_x - g->player.pos_x;
 	g->rendspr.sprite_y = tmp->pos_y - g->player.pos_y;
 	g->rendspr.inv_det = 1.0 / (g->player.plane_x * g->player.dir_y

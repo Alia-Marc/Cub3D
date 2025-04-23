@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malia <malia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 19:03:52 by malia             #+#    #+#             */
-/*   Updated: 2025/04/17 20:28:11 by malia            ###   ########.fr       */
+/*   Updated: 2025/04/23 18:00:54 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	handle_mouse_mouvement(int x, int y, t_data *g)
 
 void	hooks(t_data *g)
 {
-	//mlx_mouse_hide(g->mlx_ptr, g->win_ptr); Pour cacher la souris, la fonction leak
 	mlx_hook(g->win_ptr, KeyPress, KeyPressMask, handle_keypress, g);
 	mlx_hook(g->win_ptr, KeyRelease, KeyReleaseMask, handle_keyrelease, g);
 	mlx_hook(g->win_ptr, DestroyNotify, StructureNotifyMask,

@@ -3,36 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emfourni <emfourni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:42:36 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/21 05:43:47 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/23 17:59:13 by emfourni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-void	print_sprites_location(t_data *g, t_sprite **sprites)
-{
-	t_sprite	*tmp;
-
-	if (!sprites)
-		return ;
-	tmp = (*sprites);
-	while (tmp)
-	{
-		printf("([%d] pos_x = %f, pos_y = %f), ", tmp->indice, tmp->pos_x, tmp->pos_y);
-		tmp = tmp->next;
-	}
-	printf("\n");
-	// int	i;
-	// while (i < g->num_sprites)
-	// {
-	// 	printf("TEST([%d] pos_x = %f, pos_y = %f), ", i, (*sprites)[i].pos_x, (*sprites)[i].pos_y);
-	// 	i++;
-	// }
-	// printf("\n");
-}
 
 void	add_new_sprite_location(t_data *g, int keycode)
 {
@@ -42,7 +20,6 @@ void	add_new_sprite_location(t_data *g, int keycode)
 		sprite_add_back(&g->sprites,
 			create_new_sprite(g, g->player.pos_x, g->player.pos_y));
 		g->num_sprites += 1;
-		//print_sprites_location(g, &g->sprites);
 	}
 }
 
@@ -106,14 +83,6 @@ void	draw_sprites(t_data *g, double *Z_Buffer)
 
 	i = 0;
 	sort_sprites_distance(g, 0, 0);
-	// i = 0;
-	// while (i < g->num_sprites)
-	// {
-	// 	printf("(%d;%f), ", g->rendspr.sprite_order[i], g->rendspr.sprite_distance[i]);
-	// 	i++;
-	// }
-	// //printf("\n");
-	// i = 0;
 	animated_texture = choose_animated_texture(g);
 	while (i < g->num_sprites)
 	{
