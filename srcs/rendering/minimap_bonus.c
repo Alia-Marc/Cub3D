@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 02:28:36 by aliam             #+#    #+#             */
-/*   Updated: 2025/04/20 02:59:53 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/26 03:59:25 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	choose_color_and_draw(double *map, int pos_y, int pos_x, t_data *g)
 void	minimap(t_data *g, int pos_y, int pos_x)
 {
 	double	map[2];
+	char	*position;
 
 	map[0] = g->player.pos_x - 5;
 	while (pos_y < g->minimap.height)
@@ -104,7 +105,12 @@ void	minimap(t_data *g, int pos_y, int pos_x)
 		pos_y++;
 		map[0] += 0.05;
 	}
-	print_player_pos(g);
-	print_outer_layer(g);
+	(print_player_pos(g), print_outer_layer(g));
 	mlx_put_image_to_window(g->mlx_ptr, g->win_ptr, g->minimap.img, 50, 50);
+	position = malloc(sizeof(g->player.pos_x) + sizeof(g->player.pos_y) + 15);
+	if (!position)
+		exit_free_all(g, "Malloc error\n", 1);
+	sprintf(position, "x : %f     y : %f", g->player.pos_x, g->player.pos_y);
+	mlx_string_put(g->mlx_ptr, g->win_ptr, 64, 40, 0x00FF00, position);
+	free(position);
 }

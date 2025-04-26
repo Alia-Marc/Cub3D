@@ -6,7 +6,7 @@
 /*   By: aliam <aliam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:29 by marc              #+#    #+#             */
-/*   Updated: 2025/04/21 05:53:04 by aliam            ###   ########.fr       */
+/*   Updated: 2025/04/26 03:54:25 by aliam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <stdbool.h>
+# include <string.h>
 
 # define MOV_SPEED 0.04
 # define ROT_SPEED 0.05
